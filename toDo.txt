@@ -1,0 +1,8 @@
+Remove used questions from random using 'used' - using JS seems bad, why not use local storage (add question_id to there, if it's there, try again)
+register if correct answer used and store in session.
+-- for the question, you know the right answer (corrrect_answer_id)
+-- if the answer_id == question.correct_answer_id, return 
+position elements
+end quiz button
+-- clears storage
+-- 

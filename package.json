@@ -1,0 +1,21 @@
+{
+  "name": "quizone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "brojs.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "buildQuiz": "browserify index.js -o bundleQuiz.js",
+    "buildLogin": "browserify ./scripts/login.js -o bundleLogin.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jquery": "^3.4.1",
+    "pg": "^7.14.0",
+    "pg-hstore": "^2.3.3",
+    "pg-promise": "^10.3.1",
+    "sequelize": "^5.21.3"
+  }
+}

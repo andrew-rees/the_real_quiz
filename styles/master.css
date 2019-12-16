@@ -1,0 +1,52 @@
+footer {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    border: solid black 1px;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+    top: 10px;
+    border: solid black 1px;
+    height: 110px;
+    width: 100%;
+}
+
+article {
+    border: solid black 1px;
+    width: 70%
+}
+
+/* section {
+    border: solid black 1px;
+} */
+
+aside {
+    border: solid black 1px;
+}
+
+#session_pane {
+    position: relative;
+    right: 10px;
+    width: 30%;
+    height: 70%;
+    margin: 10px;
+}
+
+#quiz {
+    position: relative;
+    left: 10px;
+    width: 60%;
+    height: 20%;
+    margin: 10px;
+}
+
+#header_logo {
+    height: 100%;
+    padding: 5px;
+}

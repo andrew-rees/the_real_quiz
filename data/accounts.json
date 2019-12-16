@@ -1,0 +1,35 @@
+{
+    "accounts":
+
+        [{
+            "account_id": 1,
+            "username": "admin1@WebbiSkools.com",
+            "password": "$2a$06$xv/Nn/EaoUL3CPwt6wVy9.19UOPKJ6p3LHOFd2gXmpe2z74/6Soea",
+            "permission": 1
+        }, {
+            "account_id": 2,
+            "username": "admin2@WebbiSkools.com",
+            "password": "$2a$06$azmKaQhqWriFf54VtdCzz.zhlgzb8GLECWtrEgp3EJ25LzcGNxZ2u",
+            "permission": 1
+        }, {
+            "account_id": 3,
+            "username": "taker1@gmail.com",
+            "password": "$2a$06$PYro/CnQKjHQFk8VqNPRX.tMzn95KoEVM5L7S7MfPE/ESf5dlQota",
+            "permission": 2
+        }, {
+            "account_id": 4,
+            "username": "taker2@gmail.com",
+            "password": "$2a$06$JHv4cmwnmb6/1oqdcBJaP.upoGoWjgzfRiVGTqGIg2FSjh/t6LNEm",
+            "permission": 2
+        }, {
+            "account_id": 5,
+            "username": "viewer1@gmail.com",
+            "password": "$2a$06$SQDRuQV9palDUp6iZ1MRCuY9QFpTUyZ0br6db9NQIB/WJiSrRSo9W",
+            "permission": 3
+        }, {
+            "account_id": 6,
+            "username": "viewer2@gmail.com",
+            "password": "$2a$06$N8D6i90RJGSSEAxXH0q.euFLL5PZUd9m/2EKmoqPK0GlcWPmK.nna",
+            "permission": 3
+        }]
+}

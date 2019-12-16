@@ -1,0 +1,73 @@
+{
+    "questions": [{
+            "question_id": 1,
+            "question_text": "What type of animal is a spider?",
+            "correct_answer_id": 1,
+            "question_used": false,
+            "quiz_id": 1
+        },
+        {
+            "question_id": 2,
+            "question_text": "What is the printer error?",
+            "correct_answer_id": 5,
+            "question_used": false,
+            "quiz_id": 1
+        },
+        {
+            "question_id": 3,
+            "question_text": "What can Finchy throw over a pub?",
+            "correct_answer_id": 9,
+            "question_used": false,
+            "quiz_id": 1
+        },
+        {
+            "question_id": 4,
+            "question_text": "What did Finchy throw over the Warehouse?",
+            "correct_answer_id": 13,
+            "question_used": false,
+            "quiz_id": 1
+        },
+        {
+            "question_id": 5,
+            "question_text": "Whats the capital of Borneo?",
+            "correct_answer_id": 17,
+            "question_used": false,
+            "quiz_id": 1
+        },
+        {
+            "question_id": 6,
+            "question_text": "What does Tim tell Dawn?",
+            "correct_answer_id": 21,
+            "question_used": false,
+            "quiz_id": 1
+        },
+        {
+            "question_id": 7,
+            "question_text": "What is Davids management philosophy?",
+            "correct_answer_id": 25,
+            "question_used": false,
+            "quiz_id": 1
+        },
+        {
+            "question_id": 8,
+            "question_text": "Who wrote 'In the Summertime?",
+            "correct_answer_id": 29,
+            "question_used": false,
+            "quiz_id": 1
+        },
+        {
+            "question_id": 9,
+            "question_text": "What was the average age of a soldier in the Vietnam War?",
+            "correct_answer_id": 33,
+            "question_used": false,
+            "quiz_id": 1
+        },
+        {
+            "question_id": 10,
+            "question_text": "What is Gareth afraid of?",
+            "correct_answer_id": 37,
+            "question_used": false,
+            "quiz_id": 1
+        }
+    ]
+}

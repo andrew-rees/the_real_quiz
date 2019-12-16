@@ -1,0 +1,9 @@
+{
+    "quizzes": [{
+        "quiz_id": 1,
+        "quiz_name": "The Real Quiz"
+    }, {
+        "quiz_id": 2,
+        "quiz_name": "The Dead Parrots Quiz\n"
+    }]
+}
