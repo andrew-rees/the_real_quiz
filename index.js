@@ -4,6 +4,10 @@ var $ = require('./scripts/jQuery.js');
 
 window.onload = function () {
 
+    if(sessionStorage.getItem("permission_level") == "1") {
+        $('#admin_button').prop("disabled", false);
+    };
+
     localFunctions.findQuizzesLocal();
     localFunctions.displayQuizzesLocal();
 

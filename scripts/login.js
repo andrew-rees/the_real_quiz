@@ -31,27 +31,26 @@ var accountMockJSON = [{
         "username": "viewer2@gmail.com",
         "password": "$2a$06$N8D6i90RJGSSEAxXH0q.euFLL5PZUd9m/2EKmoqPK0GlcWPmK.nna",
         "permission": 3
+    },{
+        "account_id": 7,
+        "username": "andrewtrevor.rees@gmail.com",
+        "password": "1234",
+        "permission": 1
     }]
 
 window.onload = function () {
+
+    if(sessionStorage.getItem("permission_level") == "1") {
+        $('#admin_button').prop("disabled", false);
+    };
+    
 
     $('#username').blur(() => {checkField("#username", /^[A-z0-9._%+-]+@[A-z0-9.-]+\.[A-z]{2,}$/)})
     $('#password').blur(() => {checkField("#password", /[^/>]*/)})
 
     $("#submit_login").click(() => {checkAndSubmit("#username", /^[A-z0-9._%+-]+@[A-z0-9.-]+\.[A-z]{2,}$/, "#password", /[^/>]*/)})
 
-    var fieldsToTest = [{
-        name: "username",
-        id: "#username",
-        regex: /^[A-z0-9._%+-]+@[A-z0-9.-]+\.[A-z]{2,}$/,
-        fieldValue: null
-    }, {
-        name: "password",
-        id: "#password",
-        regex: /[^/>]*/,
-        fieldValue: null
-    }]
-
+    var fieldsToTest = [];
 
     function checkField (id, regexep) {
         var regex = regexep
@@ -67,37 +66,42 @@ window.onload = function () {
 
     
     function checkAndSubmit (username, unRegex, password, pwRegex) {
-        var parameters = [username, unRegex, password, pwRegex]
+        //repeat checkField
+        //get value
         var success = 0;
         var errorString = "";
 
-        for (var i = 0; i < 2; i++) {
+        //username
+        var unId = username
+        var unVal = $(username).val();
+        var unName = $(username).attr("name");
 
-        }
+        //password
+        var pwId = password
+        var pwVal = $(password).val();
+        var pwName = $(password).attr("name");
 
-        fieldsToTest.forEach((value) => {
-            var name = value.name;
-            var id = value.id;
-            var regex = value.regex;
-            var fieldValue = $(id).val();
-            fieldsToTest.fieldValue = fieldValue;
+        function checkFieldValue (fieldValue, fieldId, fieldRegex, fieldName) {
             if (fieldValue) {
-                if (regex.test(fieldValue)) {
+                if (fieldRegex.test(fieldValue)) {
                     success++
-                    $(id).css("border-color", "green")
+                    $(fieldId).css("border-color", "green")
+                    fieldsToTest.push({value: fieldValue})
                 } else {
-                    errorString += `${name} `
-                    $(id).css("border-color", "red")
+                    errorString += `${fieldName} `
+                    $(fieldId).css("border-color", "red")
                 };
             } else {
-                errorString += `${name} `
-                $(id).css("border-color", "red")
+                errorString += `${fieldName} `
+                $(fieldId).css("border-color", "red")
             }
-        });
+        }
+
+        checkFieldValue(unVal, unId, unRegex, unName)
+        checkFieldValue(pwVal, pwId, pwRegex, pwName)
 
         //final tests
-        if (success == fieldsToTest.length) {
-            //console.log("All fields ok")
+        if (success == 2) {
             passLoginToSession();
             passLoginToNode(fieldsToTest);
             //passLoginToServer(fieldsToTest);
@@ -112,26 +116,29 @@ window.onload = function () {
     function passLoginToSession () {
         var loginSerialized = $("form").serialize()
         sessionStorage.setItem("submitted_login", loginSerialized);
-        //console.log(loginSerialized)
     }
 
     function passLoginToNode (fields) {
-        //check the accounts for a username match (tolowercase)
-        //if match, compare p/w
-        //if ok, direct to index and add to session "logged in"
-        //if not ok, error on page
-        var username = fields[0].fieldValue
-        var password = fields[1].fieldValue
+
+        var foundUsername = false;
+        var username = fields[0].value
+        var password = fields[1].value
         var thisAccount = accountMockJSON.find((account) => {
             if (username.toLowerCase() == account.username.toLowerCase()) {
-                return account
+                foundUsername = true;
+                if (account.password == password) {
+                    loggedIn(true)
+                    sessionStorage.setItem("permission_level", account.permission)
+                    return
+                } else {
+                    loggedIn(false)
+                    return
+                } 
+            }
+            if (!foundUsername) {
+                loggedIn(false)
             }
         })
-        if (thisAccount.password == password) {
-            loggedIn(true)
-        } else {
-            loggedIn(false)
-        }
     }
 
     function loggedIn (isLoggedIn) {
@@ -140,7 +147,9 @@ window.onload = function () {
             $(location).attr('href', 'C:/Work/Week%20Project/The_Real_Quiz/Code/index.html')
         } else {
             sessionStorage.removeItem("logged_in")
-            alert("Sorry, we couldn't log you in, please try again")
+            console.log("Sorry, we couldn't log you in, please try again")
+            $('#username').css("border-color", "red")
+            $('#password').css("border-color", "red")
         }
     }
 }

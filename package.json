@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "buildQuiz": "browserify index.js -o bundleQuiz.js",
-    "buildLogin": "browserify ./scripts/login.js -o bundleLogin.js"
+    "buildLogin": "browserify ./scripts/login.js -o bundleLogin.js",
+    "buildAdmin": "browserify ./scripts/admin.js -o bundleAdmin.js"
   },
   "author": "",
   "license": "ISC",
