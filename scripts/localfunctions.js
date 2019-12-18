@@ -3,7 +3,8 @@ var Answer = require('./modules/answer.js')
 var Quiz = require('./modules/quiz.js')
 var QuizSession = require('./modules/quizSession.js')
 var $ = require('./jQuery.js')
-const Sequelize = require('sequelize');
+//var jsonFile = require('../data/testJSON.js')
+//const Sequelize = require('sequelize');
 var Account = require('./modules/account.js')
 
 var quizMockJSON = [{
@@ -83,6 +84,20 @@ var questionMockJSON = [{
         "correct_answer_id": 37,
         "question_used": false,
         "quiz_id": 1
+    },
+    {
+        "question_id": 11,
+        "question_text": "Who is on Tim's Case?",
+        "correct_answer_id": 43,
+        "question_used": false,
+        "quiz_id": 2
+    },
+    {
+        "question_id": 12,
+        "question_text": "What is 'in process?'",
+        "correct_answer_id": 47,
+        "question_used": false,
+        "quiz_id": 2
     }
 ];
 
@@ -246,47 +261,79 @@ var answerMockJSON = [{
     "answer_id": 40,
     "answer_text": "Benefits fraud",
     "question_id": 10
+}, {
+    "answer_id": 41,
+    "answer_text": "Jamie",
+    "question_id": 11
+}, {
+    "answer_id": 42,
+    "answer_text": "Sheila from Accounts",
+    "question_id": 11
+}, {
+    "answer_id": 43,
+    "answer_text": "Trevor Cromwell",
+    "question_id": 11
+}, {
+    "answer_id": 44,
+    "answer_text": "Jeff Lamp",
+    "question_id": 11
+}, {
+    "answer_id": 45,
+    "answer_text": "The fire alarm test",
+    "question_id": 12
+}, {
+    "answer_id": 46,
+    "answer_text": "The Hunt for Davids successor",
+    "question_id": 12
+}, {
+    "answer_id": 47,
+    "answer_text": "Invetigation",
+    "question_id": 12
+}, {
+    "answer_id": 48,
+    "answer_text": "Investigation",
+    "question_id": 12
 }];
 
-// var accountMockJSON = [{
-//     "account_id": 1,
-//     "username": "admin1@WebbiSkools.com",
-//     "password": "$2a$06$xv/Nn/EaoUL3CPwt6wVy9.19UOPKJ6p3LHOFd2gXmpe2z74/6Soea",
-//     "permission": 1
-// }, {
-//     "account_id": 2,
-//     "username": "admin2@WebbiSkools.com",
-//     "password": "$2a$06$azmKaQhqWriFf54VtdCzz.zhlgzb8GLECWtrEgp3EJ25LzcGNxZ2u",
-//     "permission": 1
-// }, {
-//     "account_id": 3,
-//     "username": "taker1@gmail.com",
-//     "password": "$2a$06$PYro/CnQKjHQFk8VqNPRX.tMzn95KoEVM5L7S7MfPE/ESf5dlQota",
-//     "permission": 2
-// }, {
-//     "account_id": 4,
-//     "username": "taker2@gmail.com",
-//     "password": "$2a$06$JHv4cmwnmb6/1oqdcBJaP.upoGoWjgzfRiVGTqGIg2FSjh/t6LNEm",
-//     "permission": 2
-// }, {
-//     "account_id": 5,
-//     "username": "viewer1@gmail.com",
-//     "password": "$2a$06$SQDRuQV9palDUp6iZ1MRCuY9QFpTUyZ0br6db9NQIB/WJiSrRSo9W",
-//     "permission": 3
-// }, {
-//     "account_id": 6,
-//     "username": "viewer2@gmail.com",
-//     "password": "$2a$06$N8D6i90RJGSSEAxXH0q.euFLL5PZUd9m/2EKmoqPK0GlcWPmK.nna",
-//     "permission": 3
-// }]
+// // var accountMockJSON = [{
+// //     "account_id": 1,
+// //     "username": "admin1@WebbiSkools.com",
+// //     "password": "$2a$06$xv/Nn/EaoUL3CPwt6wVy9.19UOPKJ6p3LHOFd2gXmpe2z74/6Soea",
+// //     "permission": 1
+// // }, {
+// //     "account_id": 2,
+// //     "username": "admin2@WebbiSkools.com",
+// //     "password": "$2a$06$azmKaQhqWriFf54VtdCzz.zhlgzb8GLECWtrEgp3EJ25LzcGNxZ2u",
+// //     "permission": 1
+// // }, {
+// //     "account_id": 3,
+// //     "username": "taker1@gmail.com",
+// //     "password": "$2a$06$PYro/CnQKjHQFk8VqNPRX.tMzn95KoEVM5L7S7MfPE/ESf5dlQota",
+// //     "permission": 2
+// // }, {
+// //     "account_id": 4,
+// //     "username": "taker2@gmail.com",
+// //     "password": "$2a$06$JHv4cmwnmb6/1oqdcBJaP.upoGoWjgzfRiVGTqGIg2FSjh/t6LNEm",
+// //     "permission": 2
+// // }, {
+// //     "account_id": 5,
+// //     "username": "viewer1@gmail.com",
+// //     "password": "$2a$06$SQDRuQV9palDUp6iZ1MRCuY9QFpTUyZ0br6db9NQIB/WJiSrRSo9W",
+// //     "permission": 3
+// // }, {
+// //     "account_id": 6,
+// //     "username": "viewer2@gmail.com",
+// //     "password": "$2a$06$N8D6i90RJGSSEAxXH0q.euFLL5PZUd9m/2EKmoqPK0GlcWPmK.nna",
+// //     "permission": 3
+// // }]
 
-// var quizSessionMockJSON = [{
-//     "account_taking_id": 4,
-//     "session_id": 1,
-//     "quiz_id": 2,
-//     "start_date": "15/12/19",
-//     "score": 0
-// }]
+// // var quizSessionMockJSON = [{
+// //     "account_taking_id": 4,
+// //     "session_id": 1,
+// //     "quiz_id": 2,
+// //     "start_date": "15/12/19",
+// //     "score": 0
+// // }]
 
 
 
@@ -307,6 +354,7 @@ var answerMockJSON = [{
     };
     //Fill the quizzes <select> with options
     function displayQuizzesLocal() {
+        //quizzes = []
         $('#quizzes_selector').empty();
         quizzes.forEach((value) => {
             var print = $("<option></option>").text(value.quiz_name).attr('value', value.quiz_id)
@@ -321,15 +369,21 @@ var answerMockJSON = [{
 
     //find questions from that quiz and put them in this array
     function findQuestionsLocal(quizNumber) {
-        questionMockJSON.forEach((value) => {
-            if (value.quiz_id == quizNumber) {
+        questions = []
+        if (quizNumber) {
+            questionMockJSON.forEach((value) => {
+                if (value.quiz_id == quizNumber) {
+                    questions.push(new Question(value.question_id, value.question_text, value.correct_answer_id, value.question_used, value.quiz_id))
+                };
+            })
+        } else {
+            questionMockJSON.forEach((value) => {
                 questions.push(new Question(value.question_id, value.question_text, value.correct_answer_id, value.question_used, value.quiz_id))
-            };
-        });
+            })
+        }
+
         //console.log("Questions array after findQuestions: " + questions)
     };
-
-
 
     //for each question, find the answers
     function findAnswersLocal(questionNumber) {
@@ -363,22 +417,11 @@ var answerMockJSON = [{
         });
     };
 
-    //start a quiz session
-    function startQuizSessionSQL(quizNumber, accountId) {
-        const sequelize = new Sequelize('postgres://andrew:Password1@localhost:3000/TEST_Quiz');
-        accountId = 1;
-        sequelize
-            .query(`INSERT INTO "quiz_sessions" ("account_id_taking", "session_id", "quiz_id", "start_date", "score") VALUES(${accountId}, nextval('create_unique_id'), ${quizNumber}, CURRENT_DATE, 0)`)
-            .then(() => {
-                console.log('Query passed to DB');
-                sequelize.close()
-            })
-            .catch(err => {
-                console.error('Error:', err);
-            });   
-    };
+
+
     var thisSession
-    function startAndStoreQuizSessionLocal (quizNumber, accountId) {
+
+    function startAndStoreQuizSessionLocal(quizNumber, accountId) {
         accountId = 2;
         thisSession = new QuizSession(accountId, 1, quizNumber, "16/12/19", 0, null);
         sessionStorage.setItem("accountId", thisSession.account_taking_id);
@@ -389,41 +432,14 @@ var answerMockJSON = [{
         //console.log(thisSession)
     };
 
-     function storeQuizSessionSQL (accountId) {
-        accountId = 1;
-        const sequelize = new Sequelize('postgres://andrew:Password1@localhost:3000/TEST_Quiz');
-        sequelize
-            .query(`SELECT * FROM "quiz_sessions" WHERE "account_id_taking" = ${accountId} ORDER BY "start_date" desc LIMIT 1`)
-            .then ((session) => {
-                for (i = 0; i < session[0].length; i++) {
-                    var thisSession = new QuizSession(session[0][i].account_taking_id, session[0][i].session_id, session[0][i].quiz_id, session[0][i].start_date, session[0][i].score);
-                    sessionStorage.setItem("account_taking_id", thisSession.account_taking_id);
-                    sessionStorage.setItem("session_id", thisSession.session_id);
-                    sessionStorage.setItem("quiz_id", thisSession.quiz_id);
-                    sessionStorage.setItem("start_date", thisSession.start_date);
-                    sessionStorage.setItem("score", thisSession.score);
-                sequelize.close();
-                }
-            })
-            .catch(err => {
-                        console.error('Unable to connect to the database:', err);
-                    });
-    }
-
-    function updateQuizSessionSQL () {
-        //get each question and answer pairing
-        //send them to the DB. If answer_id === correct_answer_id
-
-    }
-
-    function updateQuizSessionLocal (thisQandA) {
+    function updateQuizSessionLocal(thisQandA) {
         sessionQandAs.push(thisQandA)
     }
 
 
-    function gatherFormDataLocal () {
+    function gatherFormDataLocal() {
         var answersSubmitted = [];
-        $('select.answer').map(function() {
+        $('select.answer').map(function () {
             let thisQandA = {
                 question_text: null,
                 question_id: null,
@@ -449,18 +465,18 @@ var answerMockJSON = [{
         console.log(thisSession)
     }
 
-    function presentSubmittedForm (QandAobject) {
+    function presentSubmittedForm(QandAobject) {
         var questionforScreen = $("<li></li>").text("Question: " + QandAobject.question_text).attr('class', 'qanda').css('font-weight', 'bold');
         var answerforScreen = $('<p></p>').text("Your Answer: " + QandAobject.answer_text).attr('class', 'qanda');
         $('#show_qanda').append(questionforScreen);
         $('#show_qanda').append(answerforScreen);
     };
 
-    function removeItem (attribute) {
+    function removeItem(attribute) {
         $(attribute).remove();
     };
 
-    function printScore (correct) {
+    function printScore(correct) {
         var score = $('<p></p>').text("You scored: " + correct.length).css('color', 'red').css('font-size', '36pt').css('font-weight', 'bold');
         $('#score').append(score);
         var message = $('<p></p>').css('color', 'red').css('font-size', '24pt').css('font-weight', 'bold');
@@ -472,28 +488,110 @@ var answerMockJSON = [{
         $('#score').append(message);
     }
 
-    function checkAnswersLocal () {
-        //get thisSession
-        //for each, check questionMockJSON for the Q, and see if the answer_id matches correct_answer_id
+    function checkAnswersLocal() {
         var correct = sessionQandAs.map((value) => {
-            //look in mockjson for the question with same  id as value.question_id
-            //get the correct_answer_id from that question
-            //compare this to the value.answer_id
-            //if same, add to the 
-
             var thisQuestion = questionMockJSON.find((question) => {
-               return value.question_id == question.question_id
+                return value.question_id == question.question_id
             });
             if (thisQuestion.correct_answer_id == value.answer_id) {
                 return thisQuestion
-            }
+            };
         });
-
         correct = correct.filter(function (val) {
             return val != null;
-          });
-          printScore(correct)
+        });
+        printScore(correct)
     }
+
+
+    function fillQuestionsOption() {
+        questions.forEach((value) => {
+            var question = $('<option></option>').text(value.question_text).attr('id', `${value.question_id}`)
+            $('#question_selector').append(question)
+        })
+    }
+
+
+    //admin page functions
+    function printQuestionToEditLocal(questionId) {
+        if (questionId) {
+            questionMockJSON.forEach((value) => {
+                if (value.question_id == questionId) {
+                    var questionForPrinting = $('<input></input>').attr('value', value.question_text).attr('id', value.question_id).prop('type', 'text').attr('name', "questionBeingEdited").attr('class', "edit_remove");
+                    var questionText = $('<p></p>').text("Question:").attr('class', "edit_remove");
+                    $('#questions_and_answers').append(questionText);
+                    $('#questions_and_answers').append(questionForPrinting);
+                };
+            });
+        } else {
+            var questionForPrinting = $('<input></input>').prop('type', 'text').attr('name', "questionBeingEdited").attr('class', "edit_remove");
+            var questionText = $('<p></p>').text("Question:").attr('class', "edit_remove");
+            $('#questions_and_answers').append(questionText);
+            $('#questions_and_answers').append(questionForPrinting);
+        }
+
+    };
+
+    function printAnswerToEditLocal(questionId) {
+        if (questionId) {
+            answerMockJSON.forEach((value) => {
+                if (value.question_id == questionId) {
+                    var answerForPrinting = $('<input></input>').attr('value', value.answer_text).attr('id', value.answer_id).prop('type', 'text').attr('name', `answersBeingEdited${value.answer_id}`).attr('class', "edit_remove");
+                    var answerText = $('<p></p>').text("Answer:").attr('class', "edit_remove");
+                    $('#questions_and_answers').append(answerText);
+                    $('#questions_and_answers').append(answerForPrinting);
+                };
+            });
+            // var submitButton = $('<input></input>').prop("type", "submit").attr('id', 'submit_edited_question').text("Submit Edit");
+            // $('#questions_and_answers').append(submitButton)
+        } else {
+            for (var i = 1; i < 5; i++) {
+                var answerForPrinting = $('<input></input>').prop('type', 'text').attr('name', `${i}`).attr('class', "edit_remove");
+                var answerText = $('<p></p>').text(`Answer ${i}:`).attr('class', "edit_remove");
+                var isCorrect = $('<input></input>').prop('type', 'checkbox').attr('value', i).attr('name', `checkbox${i}`).attr('class', 'correct_answer_checkboxes')
+                $('#questions_and_answers').append(answerText);
+                $('#questions_and_answers').append(answerForPrinting);
+                $('#questions_and_answers').append('Correct answer: ');
+                $('#questions_and_answers').append(isCorrect);
+            }
+        }
+    };
+
+    function submitEditedQuestionLocal(question_id) {
+        var newQuestionText = $('input[name="questionBeingEdited"]').val();
+        for (var i = 0; i < questionMockJSON.length; i++) {
+            if (questionMockJSON[i].question_id == question_id) {
+                questionMockJSON[i].question_text = newQuestionText
+                console.log(questionMockJSON)
+                return
+            };
+        };
+
+        //submitAnswers
+    };
+
+
+    function submitNewQuestionLocal() {  
+        //get question and create object
+        //get answers and create objects
+        //get tickboxes and create correct_answer_id for question
+        var randomQuestionId = 15
+        // if ($('.correct_answer_checkboxes').prop('checked')) {
+        //     var correctAnswerCheckbox = 
+        // }
+
+        var questionToCreate = {question_id: randomQuestionId, question_text: $('input[name="questionBeingEdited"]').val(), correct_answer_id: "", question_used: false, quiz_id: 2};
+
+        // var answersToCreate = []
+        // for (var i = 1; i < 5; i++) {
+        //     answersToCreate.push($(`input[name="answersBeingEdited${i}"]`).val());
+        //     }
+        // };
+
+        var newQuestion = new Question(randomQuestionId, $('input[name="questionBeingEdited"]').val(), null, false, 2)
+        questionMockJSON.push(newQuestion)
+        console.log(questionMockJSON);
+    };
 
 
     exports.findQuizzesLocal = findQuizzesLocal;
@@ -501,14 +599,17 @@ var answerMockJSON = [{
     exports.getQuizNumber = getQuizNumber;
     exports.findQuestionsLocal = findQuestionsLocal;
     exports.printQandA = printQandA;
-    exports.startQuizSessionSQL = startQuizSessionSQL;
-    exports.storeQuizSessionSQL = storeQuizSessionSQL;
     exports.startAndStoreQuizSessionLocal = startAndStoreQuizSessionLocal;
     exports.gatherFormDataLocal = gatherFormDataLocal;
     exports.presentSubmittedForm = presentSubmittedForm;
     exports.removeItem = removeItem;
     exports.checkAnswersLocal = checkAnswersLocal;
-    
+    exports.fillQuestionsOption = fillQuestionsOption;
+    exports.printQuestionToEditLocal = printQuestionToEditLocal;
+    exports.submitEditedQuestionLocal = submitEditedQuestionLocal;
+    exports.printAnswerToEditLocal = printAnswerToEditLocal;
+    exports.submitNewQuestionLocal = submitNewQuestionLocal;
+
 
 
 })(typeof exports === 'undefined' ?

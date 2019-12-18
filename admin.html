@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <title>The Real Quiz</title>
     <link href="styles/master.css" rel="stylesheet" type="text/css">
-    <script src="scripts/localfunctions.js"></script>
-    <script src="scripts/index.js"></script>
+    <script src="./bundleAdmin.js"></script>
 </head>
 
 <body>
@@ -17,24 +16,34 @@
         <a href="C:\Work\Week Project\The_Real_Quiz\Code\login.html" id="login_page">
             <button>Login Page</button>
         </a>
-        <a href="C:\Work\Week Project\The_Real_Quiz\Code\admin.html" id="admin_page">
-            <button id="admin_button">Admin Page</button>
-        </a>
     </header>
     <article id="intro">
         <section>
-            <p>This is The Real Quiz, an Office-based quiz devised and hosted by me, David Brent</p>
+            <p>This is the Admin Page - if you have permission, you can add, edit and remove questions from the Quiz, <br>and you can create new Quizzes and link questions to those Quizzes.</p>
         </section>
     </article>
-    <article id="quiz">
+    <article id="Selector">
+        <p>What would you like to do?</p>
+        
+        <select id="question_selector">
+            
+        </select>
+        <br>
+        <button id="add_question">Add a new question</button><br>
+        <button id="edit_question">Edit seleted question and answers</button><br>
+        <select id="quizzes_selector">
 
+        </select><br>
+        <button id="edit_quiz" disabled>Edit Selected Quiz</button><br>
+        <button id="add_quiz" disabled>Add new Quiz</button><br>
     </article>
-    <article id="results">
+    <article id="question_or_quiz">
+        <!-- <section id="display_question_or_quiz"></section> -->
+        <section id="questions_and_answers">
 
+        </section>
+        <input type="submit" id="submit_edited_question"></input>
     </article>
-    <aside id="contents">
-
-    </aside>
     <footer id="footer">
         <Section>© WebbiSkools Ltd 2019</Section>
     </footer>
