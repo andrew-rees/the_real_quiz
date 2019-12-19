@@ -1,345 +1,15 @@
-var Question = require('./modules/question.js')
-var Answer = require('./modules/answer.js')
-var Quiz = require('./modules/quiz.js')
-var QuizSession = require('./modules/quizSession.js')
-var $ = require('./jQuery.js')
-//var jsonFile = require('../data/testJSON.js')
-//const Sequelize = require('sequelize');
-var Account = require('./modules/account.js')
-
-var quizMockJSON = [{
-    "quiz_id": 1,
-    "quiz_name": "The Real Quiz"
-}, {
-    "quiz_id": 2,
-    "quiz_name": "The Dead Parrots Quiz\n"
-}];
-
-var questionMockJSON = [{
-        "question_id": 1,
-        "question_text": "What type of animal is a spider?",
-        "correct_answer_id": 1,
-        "question_used": false,
-        "quiz_id": 1
-    },
-    {
-        "question_id": 2,
-        "question_text": "What is the printer error?",
-        "correct_answer_id": 5,
-        "question_used": false,
-        "quiz_id": 1
-    },
-    {
-        "question_id": 3,
-        "question_text": "What can Finchy throw over a pub?",
-        "correct_answer_id": 9,
-        "question_used": false,
-        "quiz_id": 1
-    },
-    {
-        "question_id": 4,
-        "question_text": "What did Finchy throw over the Warehouse?",
-        "correct_answer_id": 13,
-        "question_used": false,
-        "quiz_id": 1
-    },
-    {
-        "question_id": 5,
-        "question_text": "Whats the capital of Borneo?",
-        "correct_answer_id": 17,
-        "question_used": false,
-        "quiz_id": 1
-    },
-    {
-        "question_id": 6,
-        "question_text": "What does Tim tell Dawn?",
-        "correct_answer_id": 21,
-        "question_used": false,
-        "quiz_id": 1
-    },
-    {
-        "question_id": 7,
-        "question_text": "What is Davids management philosophy?",
-        "correct_answer_id": 25,
-        "question_used": false,
-        "quiz_id": 1
-    },
-    {
-        "question_id": 8,
-        "question_text": "Who wrote 'In the Summertime?",
-        "correct_answer_id": 29,
-        "question_used": false,
-        "quiz_id": 1
-    },
-    {
-        "question_id": 9,
-        "question_text": "What was the average age of a soldier in the Vietnam War?",
-        "correct_answer_id": 33,
-        "question_used": false,
-        "quiz_id": 1
-    },
-    {
-        "question_id": 10,
-        "question_text": "What is Gareth afraid of?",
-        "correct_answer_id": 37,
-        "question_used": false,
-        "quiz_id": 1
-    },
-    {
-        "question_id": 11,
-        "question_text": "Who is on Tim's Case?",
-        "correct_answer_id": 43,
-        "question_used": false,
-        "quiz_id": 2
-    },
-    {
-        "question_id": 12,
-        "question_text": "What is 'in process?'",
-        "correct_answer_id": 47,
-        "question_used": false,
-        "quiz_id": 2
-    }
-];
-
-var answerMockJSON = [{
-    "answer_id": 1,
-    "answer_text": "Insect",
-    "question_id": 1
-}, {
-    "answer_id": 2,
-    "answer_text": "Arachnid",
-    "question_id": 1
-}, {
-    "answer_id": 3,
-    "answer_text": "Fish",
-    "question_id": 1
-}, {
-    "answer_id": 4,
-    "answer_text": "Dog",
-    "question_id": 1
-}, {
-    "answer_id": 5,
-    "answer_text": "243",
-    "question_id": 2
-}, {
-    "answer_id": 6,
-    "answer_text": "112",
-    "question_id": 2
-}, {
-    "answer_id": 7,
-    "answer_text": "568",
-    "question_id": 2
-}, {
-    "answer_id": 8,
-    "answer_text": "Broken",
-    "question_id": 2
-}, {
-    "answer_id": 9,
-    "answer_text": "Kettle",
-    "question_id": 3
-}, {
-    "answer_id": 10,
-    "answer_text": "Shoe",
-    "question_id": 3
-}, {
-    "answer_id": 11,
-    "answer_text": "Lamp",
-    "question_id": 3
-}, {
-    "answer_id": 12,
-    "answer_text": "Pint of Lager",
-    "question_id": 3
-}, {
-    "answer_id": 13,
-    "answer_text": "Tims shoe",
-    "question_id": 4
-}, {
-    "answer_id": 14,
-    "answer_text": "Kettle",
-    "question_id": 4
-}, {
-    "answer_id": 15,
-    "answer_text": "Lamp",
-    "question_id": 4
-}, {
-    "answer_id": 16,
-    "answer_text": "Pint of Lager",
-    "question_id": 4
-}, {
-    "answer_id": 17,
-    "answer_text": "Doesnt have one",
-    "question_id": 5
-}, {
-    "answer_id": 18,
-    "answer_text": "Borneo City",
-    "question_id": 5
-}, {
-    "answer_id": 19,
-    "answer_text": "Kuala Lumpor",
-    "question_id": 5
-}, {
-    "answer_id": 20,
-    "answer_text": "Yateley",
-    "question_id": 5
-}, {
-    "answer_id": 21,
-    "answer_text": "Never give up",
-    "question_id": 6
-}, {
-    "answer_id": 22,
-    "answer_text": "Keep on moving",
-    "question_id": 6
-}, {
-    "answer_id": 23,
-    "answer_text": "Trust Encouragement Reward Loyalty, Satisfaction",
-    "question_id": 6
-}, {
-    "answer_id": 24,
-    "answer_text": "Youre the best",
-    "question_id": 6
-}, {
-    "answer_id": 25,
-    "answer_text": "Team Individuality",
-    "question_id": 7
-}, {
-    "answer_id": 26,
-    "answer_text": "Trust Encouragement Reward Loyalty, Satisfaction",
-    "question_id": 7
-}, {
-    "answer_id": 27,
-    "answer_text": "Anything Nobby Burton says",
-    "question_id": 7
-}, {
-    "answer_id": 28,
-    "answer_text": "Dead Poets Society",
-    "question_id": 7
-}, {
-    "answer_id": 29,
-    "answer_text": "Mungo Jerry",
-    "question_id": 8
-}, {
-    "answer_id": 30,
-    "answer_text": "4 non-blondes",
-    "question_id": 8
-}, {
-    "answer_id": 31,
-    "answer_text": "Texas",
-    "question_id": 8
-}, {
-    "answer_id": 32,
-    "answer_text": "Foregone Conclusion",
-    "question_id": 8
-}, {
-    "answer_id": 33,
-    "answer_text": 19,
-    "question_id": 9
-}, {
-    "answer_id": 34,
-    "answer_text": 18,
-    "question_id": 9
-}, {
-    "answer_id": 35,
-    "answer_text": 20,
-    "question_id": 9
-}, {
-    "answer_id": 36,
-    "answer_text": 21,
-    "question_id": 9
-}, {
-    "answer_id": 37,
-    "answer_text": "Jelly",
-    "question_id": 10
-}, {
-    "answer_id": 38,
-    "answer_text": "Foxholes",
-    "question_id": 10
-}, {
-    "answer_id": 39,
-    "answer_text": "Mr Toad",
-    "question_id": 10
-}, {
-    "answer_id": 40,
-    "answer_text": "Benefits fraud",
-    "question_id": 10
-}, {
-    "answer_id": 41,
-    "answer_text": "Jamie",
-    "question_id": 11
-}, {
-    "answer_id": 42,
-    "answer_text": "Sheila from Accounts",
-    "question_id": 11
-}, {
-    "answer_id": 43,
-    "answer_text": "Trevor Cromwell",
-    "question_id": 11
-}, {
-    "answer_id": 44,
-    "answer_text": "Jeff Lamp",
-    "question_id": 11
-}, {
-    "answer_id": 45,
-    "answer_text": "The fire alarm test",
-    "question_id": 12
-}, {
-    "answer_id": 46,
-    "answer_text": "The Hunt for Davids successor",
-    "question_id": 12
-}, {
-    "answer_id": 47,
-    "answer_text": "Invetigation",
-    "question_id": 12
-}, {
-    "answer_id": 48,
-    "answer_text": "Investigation",
-    "question_id": 12
-}];
-
-// // var accountMockJSON = [{
-// //     "account_id": 1,
-// //     "username": "admin1@WebbiSkools.com",
-// //     "password": "$2a$06$xv/Nn/EaoUL3CPwt6wVy9.19UOPKJ6p3LHOFd2gXmpe2z74/6Soea",
-// //     "permission": 1
-// // }, {
-// //     "account_id": 2,
-// //     "username": "admin2@WebbiSkools.com",
-// //     "password": "$2a$06$azmKaQhqWriFf54VtdCzz.zhlgzb8GLECWtrEgp3EJ25LzcGNxZ2u",
-// //     "permission": 1
-// // }, {
-// //     "account_id": 3,
-// //     "username": "taker1@gmail.com",
-// //     "password": "$2a$06$PYro/CnQKjHQFk8VqNPRX.tMzn95KoEVM5L7S7MfPE/ESf5dlQota",
-// //     "permission": 2
-// // }, {
-// //     "account_id": 4,
-// //     "username": "taker2@gmail.com",
-// //     "password": "$2a$06$JHv4cmwnmb6/1oqdcBJaP.upoGoWjgzfRiVGTqGIg2FSjh/t6LNEm",
-// //     "permission": 2
-// // }, {
-// //     "account_id": 5,
-// //     "username": "viewer1@gmail.com",
-// //     "password": "$2a$06$SQDRuQV9palDUp6iZ1MRCuY9QFpTUyZ0br6db9NQIB/WJiSrRSo9W",
-// //     "permission": 3
-// // }, {
-// //     "account_id": 6,
-// //     "username": "viewer2@gmail.com",
-// //     "password": "$2a$06$N8D6i90RJGSSEAxXH0q.euFLL5PZUd9m/2EKmoqPK0GlcWPmK.nna",
-// //     "permission": 3
-// // }]
-
-// // var quizSessionMockJSON = [{
-// //     "account_taking_id": 4,
-// //     "session_id": 1,
-// //     "quiz_id": 2,
-// //     "start_date": "15/12/19",
-// //     "score": 0
-// // }]
-
-
+var Question = require('./modules/question.js');
+var Answer = require('./modules/answer.js');
+var Quiz = require('./modules/quiz.js');
+var QuizSession = require('./modules/quizSession.js');
+var $ = require('./jQuery.js');
+var QuizJSON = require('../data/quizzes.json');
+var QuestionJSON = require('../data/questions.json');
+var AnswerJSON = require('../data/answers.json');
+var Account = require('./modules/account.js');
 
 //the work
 (function (exports) {
-
 
     var questions = [];
     var quizzes = [];
@@ -348,7 +18,8 @@ var answerMockJSON = [{
 
     //Find the quizzes and fill quizzes Array
     function findQuizzesLocal() {
-        quizMockJSON.forEach((value) => {
+        QuizJSON.quizzes.forEach((value) => {
+        //quizMockJSON.forEach((value) => {
             quizzes.push(new Quiz(value.quiz_id, value.quiz_name))
         });
     };
@@ -371,13 +42,13 @@ var answerMockJSON = [{
     function findQuestionsLocal(quizNumber) {
         questions = []
         if (quizNumber) {
-            questionMockJSON.forEach((value) => {
+            QuestionJSON.questions.forEach((value) => {
                 if (value.quiz_id == quizNumber) {
                     questions.push(new Question(value.question_id, value.question_text, value.correct_answer_id, value.question_used, value.quiz_id))
                 };
             })
         } else {
-            questionMockJSON.forEach((value) => {
+            QuestionJSON.questions.forEach((value) => {
                 questions.push(new Question(value.question_id, value.question_text, value.correct_answer_id, value.question_used, value.quiz_id))
             })
         }
@@ -387,7 +58,7 @@ var answerMockJSON = [{
 
     //for each question, find the answers
     function findAnswersLocal(questionNumber) {
-        answerMockJSON.forEach((value) => {
+        AnswerJSON.answers.forEach((value) => {
             if (value.question_id == questionNumber) {
                 answers.push(new Answer(value.answer_id, value.answer_text, value.question_id))
             };
@@ -401,6 +72,7 @@ var answerMockJSON = [{
 
     //print q and a for each value in questions array
     function printQandA() {
+        $('.hidden_until_trigger').css("visibility", "visible")
         questions.forEach((value) => {
             //var answers = [];
             findAnswersLocal(value.question_id);
@@ -438,25 +110,41 @@ var answerMockJSON = [{
 
 
     function gatherFormDataLocal() {
+        //gather all Questions by class (10)
+        //For each, create a thisQandA
+        //answer_id is val() of option:selected of the child select
+        //answer_text is text() of option:selected of the child select
+        //question_id is attribute of child select with .replace('Select', ''),
+        //question_text is text of this
+
+        // var answersSubmitted = [];
+        // $('.question').map(() => {
+        //     var child = $(this).children(":first")
+        //     let thisQandA = {
+        //         answer_id: child.val(),
+        //         answer_text: .text(),  //gets text from ALL select options
+        //         question_text: $().text(), //gets text from ALL select options and question
+        //         question_id: $().attr('id').replace('Select', ''),
+
+        //     };
+        // })
+
         var answersSubmitted = [];
         $('select.answer').map(function () {
             let thisQandA = {
-                question_text: null,
-                question_id: null,
-                answer_id: null,
-                answer_text: null
-            }
-            thisQandA.answer_id = $(this).val();
-            thisQandA.answer_text = $(this).text(); //gets text from ALL select options
-            thisQandA.question_id = $(this).attr('id').replace('Select', '');
-            thisQandA.question_text = $(this).parent().text();
+                answer_id: $(this).val(),
+                answer_text: $(this).text(),  //gets text from ALL select options
+                question_text: $(this).parent().text(), //gets text from ALL select options and question
+                question_id: $(this).attr('id').replace('Select', ''),
+
+            };
 
             answersSubmitted.push(thisQandA);
             presentSubmittedForm(thisQandA);
             updateQuizSessionLocal(thisQandA);
 
             sessionStorage.setItem(`Answer${thisQandA.question_id }`, `${thisQandA.answer_id}`)
-            console.log(`${thisQandA.question_id} , ${thisQandA.answer_id}`)
+
 
         });
         var answersSubmittedSerialized = $("form").serialize()
@@ -477,20 +165,18 @@ var answerMockJSON = [{
     };
 
     function printScore(correct) {
-        var score = $('<p></p>').text("You scored: " + correct.length).css('color', 'red').css('font-size', '36pt').css('font-weight', 'bold');
-        $('#score').append(score);
-        var message = $('<p></p>').css('color', 'red').css('font-size', '24pt').css('font-weight', 'bold');
         if (correct.length > 5) {
-            message.text("Well done!!")
+            var message = "Well done!!"
         } else if (correct.length <= 5) {
-            message.text("Hmm, not great")
+            var message = "Hmm, not great"
         }
-        $('#score').append(message);
+        var score = $('<h2></h2>').text("You scored: " + correct.length + "... " + message)
+        $('#score').prepend(score);
     }
 
     function checkAnswersLocal() {
         var correct = sessionQandAs.map((value) => {
-            var thisQuestion = questionMockJSON.find((question) => {
+            var thisQuestion = QuestionJSON.questions.find((question) => {
                 return value.question_id == question.question_id
             });
             if (thisQuestion.correct_answer_id == value.answer_id) {
@@ -511,35 +197,43 @@ var answerMockJSON = [{
         })
     }
 
+    function hideAdminFunctions () {
+        $('.admin_page_functions').css("display", "none");
+    };
 
     //admin page functions
     function printQuestionToEditLocal(questionId) {
+        $('.hidden_until_trigger').css("visibility", "visible")
         if (questionId) {
-            questionMockJSON.forEach((value) => {
+            QuestionJSON.questions.forEach((value) => {
                 if (value.question_id == questionId) {
                     var questionForPrinting = $('<input></input>').attr('value', value.question_text).attr('id', value.question_id).prop('type', 'text').attr('name', "questionBeingEdited").attr('class', "edit_remove");
                     var questionText = $('<p></p>').text("Question:").attr('class', "edit_remove");
-                    $('#questions_and_answers').append(questionText);
-                    $('#questions_and_answers').append(questionForPrinting);
+                    $('#questions_and_answers').prepend(questionForPrinting);
+                    $('#questions_and_answers').prepend(questionText);
+                    
                 };
             });
         } else {
             var questionForPrinting = $('<input></input>').prop('type', 'text').attr('name', "questionBeingEdited").attr('class', "edit_remove");
             var questionText = $('<p></p>').text("Question:").attr('class', "edit_remove");
-            $('#questions_and_answers').append(questionText);
-            $('#questions_and_answers').append(questionForPrinting);
+            
+            $('#questions_and_answers').prepend(questionForPrinting);
+            $('#questions_and_answers').prepend(questionText);
         }
 
     };
 
     function printAnswerToEditLocal(questionId) {
+        $('.hidden_until_trigger').css("visibility", "visible")
         if (questionId) {
-            answerMockJSON.forEach((value) => {
+            AnswerJSON.answers.forEach((value) => {
                 if (value.question_id == questionId) {
                     var answerForPrinting = $('<input></input>').attr('value', value.answer_text).attr('id', value.answer_id).prop('type', 'text').attr('name', `answersBeingEdited${value.answer_id}`).attr('class', "edit_remove");
                     var answerText = $('<p></p>').text("Answer:").attr('class', "edit_remove");
-                    $('#questions_and_answers').append(answerText);
-                    $('#questions_and_answers').append(answerForPrinting);
+                    $('#questions_and_answers').prepend(answerForPrinting);
+                    $('#questions_and_answers').prepend(answerText);
+                    
                 };
             });
             // var submitButton = $('<input></input>').prop("type", "submit").attr('id', 'submit_edited_question').text("Submit Edit");
@@ -549,20 +243,23 @@ var answerMockJSON = [{
                 var answerForPrinting = $('<input></input>').prop('type', 'text').attr('name', `${i}`).attr('class', "edit_remove");
                 var answerText = $('<p></p>').text(`Answer ${i}:`).attr('class', "edit_remove");
                 var isCorrect = $('<input></input>').prop('type', 'checkbox').attr('value', i).attr('name', `checkbox${i}`).attr('class', 'correct_answer_checkboxes')
-                $('#questions_and_answers').append(answerText);
-                $('#questions_and_answers').append(answerForPrinting);
-                $('#questions_and_answers').append('Correct answer: ');
-                $('#questions_and_answers').append(isCorrect);
+                
+                $('#questions_and_answers').prepend('Correct answer: ');
+                $('#questions_and_answers').prepend(isCorrect);
+                $('#questions_and_answers').prepend(answerForPrinting);
+                $('#questions_and_answers').prepend(answerText);
+                
+                
             }
         }
     };
 
     function submitEditedQuestionLocal(question_id) {
         var newQuestionText = $('input[name="questionBeingEdited"]').val();
-        for (var i = 0; i < questionMockJSON.length; i++) {
-            if (questionMockJSON[i].question_id == question_id) {
-                questionMockJSON[i].question_text = newQuestionText
-                console.log(questionMockJSON)
+        for (var i = 0; i < QuestionJSON.questions.length; i++) {
+            if (QuestionJSON.questions[i].question_id == question_id) {
+                QuestionJSON.questions[i].question_text = newQuestionText
+                console.log(QuestionJSON)
                 return
             };
         };
@@ -589,9 +286,21 @@ var answerMockJSON = [{
         // };
 
         var newQuestion = new Question(randomQuestionId, $('input[name="questionBeingEdited"]').val(), null, false, 2)
-        questionMockJSON.push(newQuestion)
-        console.log(questionMockJSON);
+        QuestionJSON.questions.push(newQuestion)
+        console.log(QuestionJSON.questions);
     };
+
+    function addOrRemoveElements (element, action) {
+        if (action == "add") {
+
+        } else if (action == "show") {
+
+        } else if (action == "hide") {
+
+        } else if (action == "remove") {
+
+        }
+    }
 
 
     exports.findQuizzesLocal = findQuizzesLocal;
@@ -609,6 +318,7 @@ var answerMockJSON = [{
     exports.submitEditedQuestionLocal = submitEditedQuestionLocal;
     exports.printAnswerToEditLocal = printAnswerToEditLocal;
     exports.submitNewQuestionLocal = submitNewQuestionLocal;
+    exports.hideAdminFunctions = hideAdminFunctions;
 
 
 

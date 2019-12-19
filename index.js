@@ -8,6 +8,14 @@ window.onload = function () {
         $('#admin_button').prop("disabled", false);
     };
 
+    if (sessionStorage.getItem("permission_level") == ("1" || "2")) {
+        $('#quiz_section').css("display", "inline");
+    }
+
+    if (sessionStorage.getItem("logged_in") == "true") {
+        $('#spiel').css("display", "none");
+    }   
+
     localFunctions.findQuizzesLocal();
     localFunctions.displayQuizzesLocal();
     //sqlFunctions.findQuizzesSQL();
@@ -27,13 +35,13 @@ window.onload = function () {
         } catch (e) {
             console.log(e.message)
         };
-        console.log("Quiz number:" + quizNumber);
         localFunctions.findQuestionsLocal(quizNumber);
         //sqlFunctions.findQuestionsSQL(quizNumber);
         localFunctions.printQandA();
     });
 
     $("form").on("submit", function(event) {
+        $('.hidden_until_trigger2').css('visibility', "visible")
         event.preventDefault();
         localFunctions.gatherFormDataLocal();
         localFunctions.removeItem('.question');

@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8">
     <title>The Real Quiz</title>
+    <link rel='icon' href='media/site_favicon.png' type='image/x-icon' />
+    <link href="https://fonts.googleapis.com/css?family=Exo+2&display=swap" rel="stylesheet">
     <link href="styles/master.css" rel="stylesheet" type="text/css">
     <script src="./bundleLogin.js"></script>
 </head>
@@ -11,32 +13,35 @@
 <body>
     <header id="header">
         <a href="C:\Work\Week Project\The_Real_Quiz\Code\index.html">
-                <img src="./media/site_logo.PNG" id="header_logo">
+            <img src="./media/site_logo.PNG" id="header_logo">
         </a>
         <a href="C:\Work\Week Project\The_Real_Quiz\Code\admin.html" id="admin_page">
             <button disabled id="admin_button">Admin Page</button>
         </a>
     </header>
-    <article id="intro">
-        <section>
-            <p>This is The Real Quiz, an Office-based quiz devised and hosted by me, David Brent</p>
+    <article id="body">
+        <section id="intro">
+            <h2>Please log in</h2>
+            <p>Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat.</p>
+        </section>
+        <section id="login">
+            <form id="login_form">
+                <p>Have an Account?</p>
+                Username (this is your email address): <input id="username" name="username" type="email"
+                    title="Enter your email address" placeholder="email@example.com">
+                <br>Password: <input id="password" name="password" type="password" title="Enter your password"
+                    placeholder="e.g. Password1">
+            </form>
+            <input type="submit" id="submit_login">
+        </section>
+        <section id="results">
+
         </section>
     </article>
-    <article id="login">
-        <form id="login_form">
-            <p>Have an Account?</p>
-            Username (this is your email address): <input id="username" name="username" type="email" title="Enter your email address"
-                placeholder="email@example.com">
-            Password: <input id="password" name="password" type="password" title="Enter your password" placeholder="e.g. Password1">
-        </form>
-        <input type="submit" id="submit_login">
-    </article>
-    <article id="results">
 
-    </article>
-    <aside id="contents">
-
-    </aside>
     <footer id="footer">
         <Section>© WebbiSkools Ltd 2019</Section>
     </footer>

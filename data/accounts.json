@@ -31,5 +31,11 @@
             "username": "viewer2@gmail.com",
             "password": "$2a$06$N8D6i90RJGSSEAxXH0q.euFLL5PZUd9m/2EKmoqPK0GlcWPmK.nna",
             "permission": 3
-        }]
+        }, {
+            "account_id": 7,
+            "username": "andrewtrevor.rees@gmail.com",
+            "password": "1234",
+            "permission": 1
+        }
+    ]
 }

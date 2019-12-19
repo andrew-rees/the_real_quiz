@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8">
     <title>The Real Quiz</title>
+    <link rel='icon' href='media/site_favicon.png' type='image/x-icon' />
+    <link href="https://fonts.googleapis.com/css?family=Exo+2&display=swap" rel="stylesheet">
     <link href="styles/master.css" rel="stylesheet" type="text/css">
     <script src="./bundleAdmin.js"></script>
 </head>
@@ -17,32 +19,40 @@
             <button>Login Page</button>
         </a>
     </header>
-    <article id="intro">
-        <section>
-            <p>This is the Admin Page - if you have permission, you can add, edit and remove questions from the Quiz, <br>and you can create new Quizzes and link questions to those Quizzes.</p>
-        </section>
-    </article>
-    <article id="Selector">
-        <p>What would you like to do?</p>
-        
-        <select id="question_selector">
-            
-        </select>
-        <br>
-        <button id="add_question">Add a new question</button><br>
-        <button id="edit_question">Edit seleted question and answers</button><br>
-        <select id="quizzes_selector">
+    <article id="body">
 
-        </select><br>
-        <button id="edit_quiz" disabled>Edit Selected Quiz</button><br>
-        <button id="add_quiz" disabled>Add new Quiz</button><br>
-    </article>
-    <article id="question_or_quiz">
-        <!-- <section id="display_question_or_quiz"></section> -->
-        <section id="questions_and_answers">
-
+        <section id="intro">
+            <h2>Welcome to WebbiSchools Admin Page</h2>
+            <p>Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat.</p>
         </section>
-        <input type="submit" id="submit_edited_question"></input>
+        <div>
+            <section id="Selector">
+                <h3>What would you like to do?</h3>
+                <button id="add_question" class="admin_page_functions">Add a new question</button><br>
+                <select id="question_selector" class="admin_page_functions">
+
+                </select>
+                <br>
+
+                <button id="edit_question" class="admin_page_functions">Edit seleted question and answers</button><br>
+                <select id="quizzes_selector" class="admin_page_functions">
+
+                </select><br>
+                <button id="edit_quiz" disabled class="admin_page_functions">Edit Selected Quiz</button><br>
+                <button id="add_quiz" disabled class="admin_page_functions">Add new Quiz</button><br>
+            </section>
+            <section id="question_or_quiz">
+                <h3>Item to add or edit</h3>
+                <!-- <section id="display_question_or_quiz"></section> -->
+                <section id="questions_and_answers" class="hidden_until_trigger">
+                    <input type="submit" id="submit_edited_question"></input>
+                </section>
+                
+            </section>
+        </div>
     </article>
     <footer id="footer">
         <Section>© WebbiSkools Ltd 2019</Section>

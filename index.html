@@ -4,22 +4,17 @@
 <head>
     <meta charset="utf-8">
     <title>The Real Quiz</title>
-    <link rel='icon' href='media/brent.PNG' type='image/x-icon' />
+    <link rel='icon' href='media/site_favicon.png' type='image/x-icon' />
+    <link href="https://fonts.googleapis.com/css?family=Exo+2&display=swap" rel="stylesheet">
     <link href="styles/master.css" rel="stylesheet" type="text/css">
     <script src="bundleQuiz.js"></script>
-    <!-- <script src="scripts/localfunctions.js"></script>
-    <script src="scripts/index.js"></script> -->
-    <!-- <script src="scripts/jQuery.js"></script> -->
 
-    <!-- <script src="scripts/require.js"></script> -->
-    <!-- <script src="scripts/testapp.js"></script> 
-    <script src="scripts/testexports.js"></script> -->
 </head>
 
 <body>
     <header id="header">
         <a href="C:\Work\Week Project\The_Real_Quiz\Code\index.html">
-                <img src="./media/site_logo.PNG" id="header_logo">
+            <img src="./media/site_logo.PNG" id="header_logo">
         </a>
         <a href="C:\Work\Week Project\The_Real_Quiz\Code\login.html" id="login_page">
             <button>Login Page</button>
@@ -28,40 +23,60 @@
             <button disabled id="admin_button">Admin Page</button>
         </a>
     </header>
-    <article id="intro">
-        <section>
-            <p>This is The Real Quiz, an Office-based quiz devised and hosted by me, David Brent</p>
+    <article id="body">
+        <section id="intro">
+            <h2>Welcome to WebbiSchools, an online Quiz-taking platform</h2>
+            <p>Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                mollit anim id est laborum.</p>
         </section>
-    </article>
-    <article id="quiz">
-        <p>Choose your quiz from the options</p>
-        
-            <select id="quizzes_selector">
-
-            </select>
-            <button id="start_quiz">Start Quiz</button>
-
-            <form id="form_for_quiz">
-                <section id="questions_and_answers">
-
-                </section>
-                <input type="submit" id="form_submit_button">
-            </form>
-            <section id="score">
-            
+        <div>
+            <section id="spiel">
+                <h2>To take a quiz, <a href="file:///C:/Work/Week%20Project/The_Real_Quiz/Code/login.html">log in</a>
+                    for a free account</h2>
+                <p>Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat.</p>
             </section>
-            <ol id="show_qanda">
 
-            </ol>
+            <section id="quiz_section">
+                <p>Choose your quiz from the options</p>
+                <select id="quizzes_selector">
 
-        <!-- 
-        <section>
-            <p>Show database data</p>
-            <button id="show_database">Show</button>
-            <div id="show_databases_here"></div>
-        </section> -->
+                </select>
+                <button id="start_quiz">Start Quiz</button>
 
+
+            </section>
+            <section>
+                <form id="form_for_quiz">
+                    <section id="questions_and_answers" class="hidden_until_trigger">
+
+                    </section>
+                    <input type="submit" id="form_submit_button">
+                </form>
+            </section>
+            <section id="score" class="hidden_until_trigger2">
+                <ol id="show_qanda">
+
+                </ol>
+            </section>
+            <section id="social">
+                <h2>
+                    Social Media iframes here
+                </h2>
+                <iframe>
+                    Twitter
+                </iframe>
+            </section>
+
+        </div>
     </article>
+
     <footer id="footer">
         <Section>© WebbiSkools Ltd 2019</Section>
     </footer>

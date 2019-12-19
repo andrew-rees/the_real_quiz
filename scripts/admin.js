@@ -12,17 +12,18 @@ window.onload = function () {
     // sqlFunctions.findQuestionsSQL();
 
     $('#add_question').click(() => {
-        localFunctions.printQuestionToEditLocal(null);
         localFunctions.printAnswerToEditLocal(null);
-        $('#question_selector').remove();
-        $('#edit_question').remove();
+        localFunctions.printQuestionToEditLocal(null);
+        // $('#question_selector').remove();
+        // $('#edit_question').remove();
+        localFunctions.hideAdminFunctions()
     })
 
     $("#edit_question").click(() => {
         var questionId = $('#question_selector option:selected').attr('id');
         console.log(questionId)
-        localFunctions.printQuestionToEditLocal(questionId);
         localFunctions.printAnswerToEditLocal(questionId);
+        localFunctions.printQuestionToEditLocal(questionId);
     });
 
     $("#submit_edited_question").click(() => {

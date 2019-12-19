@@ -1,50 +1,13 @@
 var $ = require('./jQuery.js');
-var Account = require('./modules/account.js');
-const Sequelize = require('sequelize');
-
-var accountMockJSON = [{
-    "account_id": 1,
-    "username": "admin1@WebbiSkools.com",
-    "password": "$2a$06$xv/Nn/EaoUL3CPwt6wVy9.19UOPKJ6p3LHOFd2gXmpe2z74/6Soea",
-    "permission": 1
-}, {
-    "account_id": 2,
-    "username": "admin2@WebbiSkools.com",
-    "password": "$2a$06$azmKaQhqWriFf54VtdCzz.zhlgzb8GLECWtrEgp3EJ25LzcGNxZ2u",
-    "permission": 1
-}, {
-    "account_id": 3,
-    "username": "taker1@gmail.com",
-    "password": "$2a$06$PYro/CnQKjHQFk8VqNPRX.tMzn95KoEVM5L7S7MfPE/ESf5dlQota",
-    "permission": 2
-}, {
-    "account_id": 4,
-    "username": "taker2@gmail.com",
-    "password": "$2a$06$JHv4cmwnmb6/1oqdcBJaP.upoGoWjgzfRiVGTqGIg2FSjh/t6LNEm",
-    "permission": 2
-}, {
-    "account_id": 5,
-    "username": "viewer1@gmail.com",
-    "password": "$2a$06$SQDRuQV9palDUp6iZ1MRCuY9QFpTUyZ0br6db9NQIB/WJiSrRSo9W",
-    "permission": 3
-}, {
-    "account_id": 6,
-    "username": "viewer2@gmail.com",
-    "password": "$2a$06$N8D6i90RJGSSEAxXH0q.euFLL5PZUd9m/2EKmoqPK0GlcWPmK.nna",
-    "permission": 3
-}, {
-    "account_id": 7,
-    "username": "andrewtrevor.rees@gmail.com",
-    "password": "1234",
-    "permission": 1
-}]
+//var Account = require('./modules/account.js');
+var AccountJSON = require('../data/accounts.json');
+//const Sequelize = require('sequelize');
 
 window.onload = function () {
 
     if (sessionStorage.getItem("permission_level") == "1") {
         $('#admin_button').prop("disabled", false);
     };
-
 
     $('#username').blur(() => {
         checkField("#username", /^[A-z0-9._%+-]+@[A-z0-9.-]+\.[A-z]{2,}$/)
@@ -131,7 +94,7 @@ window.onload = function () {
         var foundUsername = false;
         var username = fields[0].value
         var password = fields[1].value
-        var thisAccount = accountMockJSON.find((account) => {
+        var thisAccount = AccountJSON.accounts.find((account) => {
             if (username.toLowerCase() == account.username.toLowerCase()) {
                 foundUsername = true;
                 if (account.password == password) {
@@ -149,28 +112,27 @@ window.onload = function () {
         });
     };
 
-    function passLoginToDB(fields) {
-        var username = fields[0].value
-        var password = fields[1].value
-        const sequelize = new Sequelize('postgres://postgres:Password1@localhost:5432/The_Real_Quiz')
-        sequelize
-            .query(`SELECT "account_id" FROM "accounts" WHERE username=${username} AND password=${password}`)
-            .then((login) => {
-                if (login.length > 0) {
-                    loggedIn(true);
-                    sequelize.close();
-                } else {
-                    loggedIn(false);
-                    sequelize.close();
-                };
-            })
-            .catch(err => {
-                console.error('Unable to connect to the database:', err);
-            });
-    }
-};
+    // function passLoginToDB(fields) {
+    //     var username = fields[0].value
+    //     var password = fields[1].value
+    //     const sequelize = new Sequelize('postgres://postgres:Password1@localhost:5432/The_Real_Quiz')
+    //     sequelize
+    //         .query(`SELECT "account_id" FROM "accounts" WHERE username=${username} AND password=${password}`)
+    //         .then((login) => {
+    //             if (login.length > 0) {
+    //                 loggedIn(true);
+    //                 sequelize.close();
+    //             } else {
+    //                 loggedIn(false);
+    //                 sequelize.close();
+    //             };
+    //         })
+    //         .catch(err => {
+    //             console.error('Unable to connect to the database:', err);
+    //         });
+    // }
 
-function loggedIn(isLoggedIn) {
+    function loggedIn(isLoggedIn) {
     if (isLoggedIn) {
         sessionStorage.setItem("logged_in", true)
         $(location).attr('href', 'C:/Work/Week%20Project/The_Real_Quiz/Code/index.html')
@@ -181,3 +143,6 @@ function loggedIn(isLoggedIn) {
         $('#password').css("border-color", "red")
     }
 };
+
+};
+
