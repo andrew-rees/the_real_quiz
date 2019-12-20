@@ -5,7 +5,4 @@ module.exports = function (account_taking_id, session_id, quiz_id, start_date, s
     this.start_date = start_date;
     this.score = score;
     this.questions = questions;
-
-
-
-    }
+}
