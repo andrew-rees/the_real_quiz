@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+var pg = require('pg');
 
 // const Question = require("../scripts/questionClass.js");
 // const Answer = require("../scripts/answerClass.js");
@@ -12,33 +13,33 @@ const Sequelize = require('sequelize');
 //const sequelize = new Sequelize('postgres://username:passwword@localhost(orwhatever):5432/dbname');
 //const sequelize = new Sequelize('postgres://andrew:Password1@localhost:3000/TEST_Quiz'); //softwire
 //const sequelize = new Sequelize('postgres://postgres:Password1@localhost:5432/Test'); //postgres12
-const sequelize = new Sequelize('postgres://postgres:Password1@localhost:5432/The_Real_Quiz'); //postgres12
+const sequelize = new Sequelize('postgres://postgres:Password1@localhost:8080/The_Real_Quiz'); //postgres12
 
 //TEST of connectivity
-// sequelize
-//     .authenticate()
-//     .then(() => {
-//         console.log('Connection has been established successfully.');
-//         sequelize.close()
-//     })
-//     .catch(err => {
-//         console.error('Unable to connect to the database:', err);
-//     });
+sequelize
+    .authenticate()
+    .then(() => {
+        console.log('Connection has been established successfully.');
+        sequelize.close()
+    })
+    .catch(err => {
+        console.error('Unable to connect to the database:', err);
+    });
 
 
     //test for insert query
     
-    var account_id = 3; //taker1
-    var quizNumber = 2; //the_real_quiz
-    sequelize
-        .query(`INSERT INTO "quiz_sessions" ("account_id_taking", "session_id", "quiz_id", "start_date", "score") VALUES(${account_id}, nextval('create_unique_session_id'), ${quizNumber}, CURRENT_DATE, 0)`)
-        .then(() => {
-            console.log('Query passed to DB');
-            sequelize.close()
-        })
-        .catch(err => {
-            console.error('Error:', err);
-        });
+    // var account_id = 3; //taker1
+    // var quizNumber = 2; //the_real_quiz
+    // sequelize
+    //     .query(`INSERT INTO "quiz_sessions" ("account_id_taking", "session_id", "quiz_id", "start_date", "score") VALUES(${account_id}, nextval('create_unique_session_id'), ${quizNumber}, CURRENT_DATE, 0)`)
+    //     .then(() => {
+    //         console.log('Query passed to DB');
+    //         sequelize.close()
+    //     })
+    //     .catch(err => {
+    //         console.error('Error:', err);
+    //     });
 
     //test for 
 

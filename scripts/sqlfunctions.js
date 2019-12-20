@@ -1,10 +1,11 @@
-// var Question = require('./modules/question.js')
-// var Answer = require('./modules/answer.js')
-// var Quiz = require('./modules/quiz.js')
-var QuizSession = require('./modules/quizSession.js')
-// var $ = require('./jQuery.js')
+var Question = require('./modules/question.js');
+var Answer = require('./modules/answer.js');
+var Quiz = require('./modules/quiz.js');
+var QuizSession = require('./modules/quizSession.js');
+var Account = require('./modules/account.js');
+var $ = require('./jQuery.js');
 const Sequelize = require('sequelize');
-// var Account = require('./modules/account.js')
+//var pg = require('pg');
 
 (function (exports) {
 
@@ -12,24 +13,26 @@ const Sequelize = require('sequelize');
     var quizzes = [];
     var answers = [];
 
+    const sequelize = new Sequelize('postgres://postgres:Password1@localhost:8080/The_Real_Quiz');
+
+    //to find quizzes from the DB
     function findQuizzesSQL() {
-        //to find quizzes from the DB
+        
     };
 
+    //to find questions from the DB
     function findQuestionsSQL(quizNumber) {
-        //to find questions from the DB
+        
     };
 
+    //to find answers from the DB
     function findAnswersSQL() {
-        //to find answers from the DB
+        
     };
-
-
 
     //start a quiz session
     function startQuizSessionSQL(quizNumber, accountId) {
-        const sequelize = new Sequelize('postgres://andrew:Password1@localhost:3000/TEST_Quiz');
-        accountId = 1;
+        accountId = 1; //This is here to hold an account
         sequelize
             .query(`INSERT INTO "quiz_sessions" ("account_id_taking", "session_id", "quiz_id", "start_date", "score") VALUES(${accountId}, nextval('create_unique_id'), ${quizNumber}, CURRENT_DATE, 0)`)
             .then(() => {
@@ -41,10 +44,9 @@ const Sequelize = require('sequelize');
             });
     };
 
-    //store a quiz_session
+    //store a quiz_session in sessionStorage and Cookies
     function storeQuizSessionSQL(accountId) {
         accountId = 1;
-        const sequelize = new Sequelize('postgres://andrew:Password1@localhost:3000/TEST_Quiz');
         sequelize
             .query(`SELECT * FROM "quiz_sessions" WHERE "account_id_taking" = ${accountId} ORDER BY "start_date" desc LIMIT 1`)
             .then((session) => {
@@ -55,20 +57,26 @@ const Sequelize = require('sequelize');
                     sessionStorage.setItem("quiz_id", thisSession.quiz_id);
                     sessionStorage.setItem("start_date", thisSession.start_date);
                     sessionStorage.setItem("score", thisSession.score);
+                    document.cookie = `accountId=${thisSession.account_taking_id}`;
+                    document.cookie = `session_id=${thisSession.session_id}`;
+                    document.cookie = `quiz_id=${thisSession}`;
+                    document.cookie = `start_date=${start_date}`;
+                    document.cookie = `score=${thisSession}`;
+                    console.log("Cookies after start quiz session: " + document.cookie)
                     sequelize.close();
                 }
             })
             .catch(err => {
                 console.error('Unable to connect to the database:', err);
             });
-    }
+    };
 
+    //Sends the Questions and Answers to the database
     function sendAnswersToSQL(sessionQandAs) { //would need to be passed properly from index.js
-        var queryString = ""; //need to remove last 4 chars from the 
+        var queryString = ""; //need to remove last 4 chars from the queryString to remove the " OR " from the last entry
         sessionQandAs.forEach(value => {
             queryString += "correct_answer_id=" + value.answer_id.toString() + " OR "
         });
-        const sequelize = new Sequelize('postgres://postgres:Password1@localhost:5432/The_Real_Quiz')
         sequelize
             .query(`SELECT * FROM questions WHERE ${queryString}`)
             .then((questions) => {
@@ -79,19 +87,21 @@ const Sequelize = require('sequelize');
             .catch(err => {
                 console.error('Unable to connect to the database:', err);
             });
-    }
+    };
 
+    //to print a question from the DB when editing a question/answer
     function printQuestionToEditSQL() {
-        //to print a question from the DB when editing a question/answer
-    }
+        
+    };
 
+    //to print an answer from the DB when editing a question/answer
     function printAnswerToEditSQL() {
-        //to print an answer from the DB when editing a question/answer
-    }
+        
+    };
 
+    //to submit an edited question to database
     function submitEditedQuestionSQL(question_id) {
         var newQuestionText = $('input[name="questionBeingEdited"]').val();
-        const sequelize = new Sequelize('postgres://postgres:Password1@localhost:5432/The_Real_Quiz')
         sequelize
             .query(`UPDATE "questions" SET question_text = ${newQuestionText} WHERE question_id=${question_id}`)
             .then((questions) => {
@@ -100,42 +110,25 @@ const Sequelize = require('sequelize');
             .catch(err => {
                 console.error('Unable to connect to the database:', err);
             });
-    }
+    };
 
+    //to submit a new question to DB. Will include validation to see if question exists based on exact string match to question_text
     function submitNewQuestionSQL() {
-        //to submit a new question to DB. will include validation to see if question exists based on exact string match to question_text
-    }
+        
+    };
 
+    //to check if the user's permissions permit actions
     function checkPermissionsSQL() {
-        //to check if the user's permissions permit actions
-    }
+        
+    };
 
+    //to log out from the database
     function logOutSQL() {
 
     };
 
-    function passLoginToDB(fields) {
-        var username = fields[0].value
-        var password = fields[1].value
-
-        accountModel
-        .count({ where: {"username": username, "password": password}  })
-        .then((value) => {
-            if (value == 0) {
-                loggedIn(true);
-                sequelize.close();
-            } else {
-                loggedIn(false);
-                sequelize.close();
-            };
-        })
-        .catch(err => {
-            console.error('Unable to connect to the database:', err);
-        });
-    }
-
+    //Models an account for Sequelize
     function accountModel() {
-        const sequelize = new Sequelize('postgres://postgres:Password1@localhost:3000/The_Real_Quiz');
         sequelize
             .define('accountModel', {
                 account_id: {
@@ -164,7 +157,30 @@ const Sequelize = require('sequelize');
             });
     };
 
-
+    //Using the model to pass a login to the databse
+    function passLoginToDB(fields) {
+        var username = fields[0].value;
+        var password = fields[1].value;
+        accountModel
+            .count({
+                where: {
+                    "username": username,
+                    "password": password
+                }
+            })
+            .then((value) => {
+                if (value == 0) {
+                    loggedIn(true);
+                    sequelize.close();
+                } else {
+                    loggedIn(false);
+                    sequelize.close();
+                };
+            })
+            .catch(err => {
+                console.error('Unable to connect to the database:', err);
+            });
+    };
 
     exports.startQuizSessionSQL = startQuizSessionSQL;
     exports.storeQuizSessionSQL = storeQuizSessionSQL;

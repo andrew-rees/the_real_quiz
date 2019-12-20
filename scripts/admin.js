@@ -1,64 +1,54 @@
 var LocalFunctions = require('./localfunctions.js');
-//var sqlFunctions = require('./sqlfunctions.js');
+//var SqlFunctions = require('./sqlfunctions.js');
 var $ = require('./jQuery');
 
 window.onload = function () {
 
     if (LocalFunctions.checkPermissionsLocal("logged_in") == "true") {
+    // if (LocalFunctions.checkPermissionsSQL("logged_in") == "true") {
         LocalFunctions.addRemoveDisableElements('#spiel', "remove");
         LocalFunctions.addRemoveDisableElements('#logout_button', "add");
     };
 
-    // if (LocalFunctions.checkPermissionsSQL("logged_in") == "true") {
-    //     LocalFunctions.addRemoveDisableElements('#spiel', "remove");
-    //     LocalFunctions.addRemoveDisableElements('#logout_button', "add");
-    // }
-
     LocalFunctions.findQuizzesLocal();
+    //SqlFunctions.findQuizzesSQL();
     LocalFunctions.displayQuizzesLocal();
     LocalFunctions.findQuestionsLocal(null);
+    //SqlFunctions.findQuestionsSQL();
     LocalFunctions.fillQuestionsOption();
-    //sqlFunctions.findQuizzesSQL();
-    // sqlFunctions.findQuestionsSQL();
-
+    
     $('#add_question').click(() => {
         LocalFunctions.printAnswerToEditLocal(null);
         LocalFunctions.printQuestionToEditLocal(null);
-        // $('#question_selector').remove();
-        // $('#edit_question').remove();
-        LocalFunctions.hideAdminFunctions()
+        LocalFunctions.hideAdminFunctions();
     })
 
     var isQuestionToEdit
     $("#edit_question").click(() => {
         isQuestionToEdit = true
         var questionId = $('#question_selector option:selected').attr('id');
-        console.log(questionId)
         LocalFunctions.printAnswerToEditLocal(questionId);
         LocalFunctions.printQuestionToEditLocal(questionId);
-        LocalFunctions.hideAdminFunctions()
+        LocalFunctions.hideAdminFunctions();
     });
 
     $("#submit_edited_question").click(() => {
         if (isQuestionToEdit) {
             var questionId = $('#question_selector option:selected').attr('id');
-            console.log("clicked");
             LocalFunctions.submitEditedQuestionLocal(questionId);
-            //sqlFunctions.submitEditedQuestionSQL(questionId);
+            //SqlFunctions.submitEditedQuestionSQL(questionId);
         } else {
             LocalFunctions.submitNewQuestionLocal();
-            //sqlfunctions.submitNewQuestionSQL();
-        }
+            //SqlFunctions.submitNewQuestionSQL();
+        };
     });
 
     $('#cancel_current').click(() => {
-        LocalFunctions.addRemoveDisableElements()
-        ".correct_answer_checkboxes"
-        "#edit_remove"
+        LocalFunctions.addRemoveDisableElements();
     })
 
     $('#logout_button').click(() => {
-        LocalFunctions.logOutLocal()
-        //sqlFunctions.logOutSQL();
-    })
+        LocalFunctions.logOutLocal();
+        //SqlFunctions.logOutSQL();
+    });
 };
