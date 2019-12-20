@@ -300,12 +300,6 @@ var AccountJSON = require('../data/accounts.json');
     function checkAndSubmit(username, unRegex, password, pwRegex) {
         var success = 0;
         var errorString = "";
-        var unId = username
-        var unVal = $(username).val();
-        var unName = $(username).attr("name");
-        var pwId = password
-        var pwVal = $(password).val();
-        var pwName = $(password).attr("name");
 
         function checkFieldValue(fieldValue, fieldId, fieldRegex, fieldName) {
             if (fieldValue) {
@@ -325,8 +319,8 @@ var AccountJSON = require('../data/accounts.json');
             };
         };
 
-        checkFieldValue(unVal, unId, unRegex, unName);
-        checkFieldValue(pwVal, pwId, pwRegex, pwName);
+        checkFieldValue($(username).val(), username, unRegex, $(username).attr("name"));
+        checkFieldValue($(password).val(), password, pwRegex, $(password).attr("name"));
 
         //final tests
         if (success == 2) {
