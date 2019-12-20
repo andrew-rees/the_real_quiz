@@ -61,6 +61,7 @@ section {
     border-radius: 15px;
     margin: 1%;
     background-color: rgb(215, 210, 195);
+    padding: 1%;
 }
 
 aside {
@@ -101,10 +102,33 @@ div section {
     flex: 1;
 }
 
-.hidden_until_trigger2 {
+/* .hidden_until_trigger2 {
     visibility: hidden;
+} */
+
+
+#quiz_display_section {
+    display: none;
 }
 
-#questions_and_answers {
-    padding: 2%;
+#score {
+    display: none;
+}
+
+iframe {
+    justify-items: center;
+    margin: 1%;
+}
+
+div a {
+    justify-items: center;
+    margin: 1%;
+}
+
+#social div {
+    justify-content: center;
+}
+
+#logout_button {
+    display: none;
 }

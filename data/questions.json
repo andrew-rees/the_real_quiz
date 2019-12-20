@@ -68,6 +68,20 @@
             "correct_answer_id": 37,
             "question_used": false,
             "quiz_id": 1
+        },
+        {
+            "question_id": 11,
+            "question_text": "Who is on Tim's Case?",
+            "correct_answer_id": 43,
+            "question_used": false,
+            "quiz_id": 2
+        },
+        {
+            "question_id": 12,
+            "question_text": "What is 'in process?'",
+            "correct_answer_id": 47,
+            "question_used": false,
+            "quiz_id": 2
         }
     ]
 }

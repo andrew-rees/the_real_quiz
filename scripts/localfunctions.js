@@ -19,7 +19,7 @@ var Account = require('./modules/account.js');
     //Find the quizzes and fill quizzes Array
     function findQuizzesLocal() {
         QuizJSON.quizzes.forEach((value) => {
-        //quizMockJSON.forEach((value) => {
+            //quizMockJSON.forEach((value) => {
             quizzes.push(new Quiz(value.quiz_id, value.quiz_name))
         });
     };
@@ -71,7 +71,7 @@ var Account = require('./modules/account.js');
     }
 
     //print q and a for each value in questions array
-    function printQandA() {
+    function printQandA(permissionLevel) {
         $('.hidden_until_trigger').css("visibility", "visible")
         questions.forEach((value) => {
             //var answers = [];
@@ -79,13 +79,18 @@ var Account = require('./modules/account.js');
             // $('#questions_and_answers').empty()
             var questionToPrint = $("<p></p>").text(value.question_text).attr('id', `Question${value.question_id}`).attr('class', 'question')
             $('#questions_and_answers').append(questionToPrint);
-            var select = $("<select></select>").attr('id', `Select${value.question_id}`).attr('class', 'answer').attr('name', `Question${value.question_id}`);
-            $(`#Question${value.question_id}`).append(select);
-            answers.forEach((val) => {
-                var answerToPrint = $("<option></option>").text(val.answer_text).attr('value', val.answer_id)
-                $(`#Select${value.question_id}`).append(answerToPrint);
-            });
-            clearArray(answers);
+            if (sessionStorage.getItem("permission_level") == "3") {
+                addRemoveDisableElements('#form_submit_button', "disable")
+                $('#form_submit_button').attr('type', 'text').val("To take a quiz, get a higher level account")
+            } else {
+                var select = $("<select></select>").attr('id', `Select${value.question_id}`).attr('class', 'answer').attr('name', `Question${value.question_id}`);
+                $(`#Question${value.question_id}`).append(select);
+                answers.forEach((val) => {
+                    var answerToPrint = $("<option></option>").text(val.answer_text).attr('value', val.answer_id)
+                    $(`#Select${value.question_id}`).append(answerToPrint);
+                });
+                clearArray(answers);
+            }
         });
     };
 
@@ -133,7 +138,7 @@ var Account = require('./modules/account.js');
         $('select.answer').map(function () {
             let thisQandA = {
                 answer_id: $(this).val(),
-                answer_text: $(this).text(),  //gets text from ALL select options
+                answer_text: $(this).text(), //gets text from ALL select options
                 question_text: $(this).parent().text(), //gets text from ALL select options and question
                 question_id: $(this).attr('id').replace('Select', ''),
 
@@ -160,9 +165,7 @@ var Account = require('./modules/account.js');
         $('#show_qanda').append(answerforScreen);
     };
 
-    function removeItem(attribute) {
-        $(attribute).remove();
-    };
+
 
     function printScore(correct) {
         if (correct.length > 5) {
@@ -197,7 +200,7 @@ var Account = require('./modules/account.js');
         })
     }
 
-    function hideAdminFunctions () {
+    function hideAdminFunctions() {
         $('.admin_page_functions').css("display", "none");
     };
 
@@ -207,17 +210,17 @@ var Account = require('./modules/account.js');
         if (questionId) {
             QuestionJSON.questions.forEach((value) => {
                 if (value.question_id == questionId) {
-                    var questionForPrinting = $('<input></input>').attr('value', value.question_text).attr('id', value.question_id).prop('type', 'text').attr('name', "questionBeingEdited").attr('class', "edit_remove");
+                    var questionForPrinting = $('<input></input>').attr('value', value.question_text).attr('id', value.question_id).prop('type', 'text').attr('name', "questionBeingEdited").attr('class', "edit_remove").attr("max-length", "100")
                     var questionText = $('<p></p>').text("Question:").attr('class', "edit_remove");
                     $('#questions_and_answers').prepend(questionForPrinting);
                     $('#questions_and_answers').prepend(questionText);
-                    
+
                 };
             });
         } else {
-            var questionForPrinting = $('<input></input>').prop('type', 'text').attr('name', "questionBeingEdited").attr('class', "edit_remove");
+            var questionForPrinting = $('<input></input>').prop('type', 'text').attr('name', "questionBeingEdited").attr('class', "edit_remove").attr("max-length", "100");
             var questionText = $('<p></p>').text("Question:").attr('class', "edit_remove");
-            
+
             $('#questions_and_answers').prepend(questionForPrinting);
             $('#questions_and_answers').prepend(questionText);
         }
@@ -229,27 +232,24 @@ var Account = require('./modules/account.js');
         if (questionId) {
             AnswerJSON.answers.forEach((value) => {
                 if (value.question_id == questionId) {
-                    var answerForPrinting = $('<input></input>').attr('value', value.answer_text).attr('id', value.answer_id).prop('type', 'text').attr('name', `answersBeingEdited${value.answer_id}`).attr('class', "edit_remove");
+                    var answerForPrinting = $('<input></input>').attr('value', value.answer_text).attr('id', value.answer_id).prop('type', 'text').attr('name', `answersBeingEdited${value.answer_id}`).attr('class', "edit_remove").attr("max-length", "100");
                     var answerText = $('<p></p>').text("Answer:").attr('class', "edit_remove");
                     $('#questions_and_answers').prepend(answerForPrinting);
                     $('#questions_and_answers').prepend(answerText);
-                    
+
                 };
             });
             // var submitButton = $('<input></input>').prop("type", "submit").attr('id', 'submit_edited_question').text("Submit Edit");
             // $('#questions_and_answers').append(submitButton)
         } else {
             for (var i = 1; i < 5; i++) {
-                var answerForPrinting = $('<input></input>').prop('type', 'text').attr('name', `${i}`).attr('class', "edit_remove");
+                var answerForPrinting = $('<input></input>').prop('type', 'text').attr('name', `${i}`).attr('class', "edit_remove").attr("max-length", "100");
                 var answerText = $('<p></p>').text(`Answer ${i}:`).attr('class', "edit_remove");
-                var isCorrect = $('<input></input>').prop('type', 'checkbox').attr('value', i).attr('name', `checkbox${i}`).attr('class', 'correct_answer_checkboxes')
-                
+                var isCorrect = $('<input></input>').prop('type', 'checkbox').attr('value', i).attr('name', `checkbox${i}`).attr('class', 'correct_answer_checkboxes');
                 $('#questions_and_answers').prepend('Correct answer: ');
                 $('#questions_and_answers').prepend(isCorrect);
                 $('#questions_and_answers').prepend(answerForPrinting);
                 $('#questions_and_answers').prepend(answerText);
-                
-                
             }
         }
     };
@@ -268,16 +268,22 @@ var Account = require('./modules/account.js');
     };
 
 
-    function submitNewQuestionLocal() {  
+    function submitNewQuestionLocal() {
         //get question and create object
         //get answers and create objects
         //get tickboxes and create correct_answer_id for question
-        var randomQuestionId = 15
+        var randomQuestionId = 100
         // if ($('.correct_answer_checkboxes').prop('checked')) {
         //     var correctAnswerCheckbox = 
         // }
 
-        var questionToCreate = {question_id: randomQuestionId, question_text: $('input[name="questionBeingEdited"]').val(), correct_answer_id: "", question_used: false, quiz_id: 2};
+        var questionToCreate = {
+            question_id: randomQuestionId,
+            question_text: $('input[name="questionBeingEdited"]').val(),
+            correct_answer_id: "",
+            question_used: false,
+            quiz_id: 2
+        };
 
         // var answersToCreate = []
         // for (var i = 1; i < 5; i++) {
@@ -285,23 +291,42 @@ var Account = require('./modules/account.js');
         //     }
         // };
 
-        var newQuestion = new Question(randomQuestionId, $('input[name="questionBeingEdited"]').val(), null, false, 2)
+        var newQuestion = new Question(randomQuestionId, $('input[name="questionBeingEdited"]').val(), null, false, null)
         QuestionJSON.questions.push(newQuestion)
         console.log(QuestionJSON.questions);
     };
 
-    function addOrRemoveElements (element, action) {
+    // function removeItem(attribute) {
+    //     $(attribute).remove();
+    // };
+
+    function addRemoveDisableElements(element, action) {
         if (action == "add") {
-
-        } else if (action == "show") {
-
-        } else if (action == "hide") {
-
+            $(element).css("display", "inline");
         } else if (action == "remove") {
-
+            //$(element).remove();
+            $(element).css("display", "none");
+        } else if (action == "show") {
+            $(element).css("visibility", "visible");
+        } else if (action == "hide") {
+            $(element).css("visibility", "hidden");
+        } else if (action == "disable") {
+            $(element).prop("disabled", true);
+        } else if (action == "enable") {
+            $(element).prop("disabled", false);
         }
     }
 
+    function checkPermissionsLocal(itemToGet) {
+        return sessionStorage.getItem(itemToGet);
+    }
+
+    function logOutLocal() {
+        if (confirm("This will log you out and you will lose any on-going or past quiz sessions")) {
+            sessionStorage.clear();
+            $(location).attr('href', 'C:/Work/Week%20Project/The_Real_Quiz/Code/index.html');
+        };
+    };
 
     exports.findQuizzesLocal = findQuizzesLocal;
     exports.displayQuizzesLocal = displayQuizzesLocal;
@@ -311,7 +336,7 @@ var Account = require('./modules/account.js');
     exports.startAndStoreQuizSessionLocal = startAndStoreQuizSessionLocal;
     exports.gatherFormDataLocal = gatherFormDataLocal;
     exports.presentSubmittedForm = presentSubmittedForm;
-    exports.removeItem = removeItem;
+    //exports.removeItem = removeItem;
     exports.checkAnswersLocal = checkAnswersLocal;
     exports.fillQuestionsOption = fillQuestionsOption;
     exports.printQuestionToEditLocal = printQuestionToEditLocal;
@@ -319,6 +344,9 @@ var Account = require('./modules/account.js');
     exports.printAnswerToEditLocal = printAnswerToEditLocal;
     exports.submitNewQuestionLocal = submitNewQuestionLocal;
     exports.hideAdminFunctions = hideAdminFunctions;
+    exports.addRemoveDisableElements = addRemoveDisableElements;
+    exports.checkPermissionsLocal = checkPermissionsLocal;
+    exports.logOutLocal = logOutLocal;
 
 
 

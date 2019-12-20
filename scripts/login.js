@@ -2,12 +2,28 @@ var $ = require('./jQuery.js');
 //var Account = require('./modules/account.js');
 var AccountJSON = require('../data/accounts.json');
 //const Sequelize = require('sequelize');
+var LocalFunctions = require('./localfunctions.js');
+//var SqlFunctions = require('./sqlfunctions.js');
 
 window.onload = function () {
 
-    if (sessionStorage.getItem("permission_level") == "1") {
-        $('#admin_button').prop("disabled", false);
+    if (LocalFunctions.checkPermissionsLocal("permission_level") == "1") {
+        LocalFunctions.addRemoveDisableElements('#admin_button', "enable");
     };
+
+    if (LocalFunctions.checkPermissionsLocal("logged_in") == "true") {
+        LocalFunctions.addRemoveDisableElements('#spiel', "remove");
+        LocalFunctions.addRemoveDisableElements('#logout_button', "add");
+    };
+
+    // if (sqlFunctions.checkPermissionsSQL("permission_level") == "1") {
+    //     LocalFunctions.addRemoveDisableElements('#admin_button', "enable")
+    // }
+
+    // if (LocalFunctions.checkPermissionsSQL("logged_in") == "true") {
+    //     LocalFunctions.addRemoveDisableElements('#spiel', "remove");
+    //     LocalFunctions.addRemoveDisableElements('#logout_button', "add");
+    // }
 
     $('#username').blur(() => {
         checkField("#username", /^[A-z0-9._%+-]+@[A-z0-9.-]+\.[A-z]{2,}$/)
@@ -75,7 +91,8 @@ window.onload = function () {
         if (success == 2) {
             passLoginToSession();
             passLoginToNode(fieldsToTest);
-            //passLoginToDB(fieldsToTest);
+            console.log(fieldsToTest);
+            //Sqlfunctions.passLoginToDB(fieldsToTest);
         }
         if (errorString != "") {
             var starter = "The following fields have failed: "
@@ -112,37 +129,23 @@ window.onload = function () {
         });
     };
 
-    // function passLoginToDB(fields) {
-    //     var username = fields[0].value
-    //     var password = fields[1].value
-    //     const sequelize = new Sequelize('postgres://postgres:Password1@localhost:5432/The_Real_Quiz')
-    //     sequelize
-    //         .query(`SELECT "account_id" FROM "accounts" WHERE username=${username} AND password=${password}`)
-    //         .then((login) => {
-    //             if (login.length > 0) {
-    //                 loggedIn(true);
-    //                 sequelize.close();
-    //             } else {
-    //                 loggedIn(false);
-    //                 sequelize.close();
-    //             };
-    //         })
-    //         .catch(err => {
-    //             console.error('Unable to connect to the database:', err);
-    //         });
-    // }
+
 
     function loggedIn(isLoggedIn) {
-    if (isLoggedIn) {
-        sessionStorage.setItem("logged_in", true)
-        $(location).attr('href', 'C:/Work/Week%20Project/The_Real_Quiz/Code/index.html')
-    } else {
-        sessionStorage.removeItem("logged_in")
-        console.log("Sorry, we couldn't log you in, please try again")
-        $('#username').css("border-color", "red")
-        $('#password').css("border-color", "red")
-    }
-};
+        if (isLoggedIn) {
+            sessionStorage.setItem("logged_in", true)
+            $(location).attr('href', 'C:/Work/Week%20Project/The_Real_Quiz/Code/index.html')
+        } else {
+            sessionStorage.removeItem("logged_in")
+            console.log("Sorry, we couldn't log you in, please try again")
+            $('#username').css("border-color", "red")
+            $('#password').css("border-color", "red")
+        }
+    };
+
+    $('#logout_button').click(() => {
+        LocalFunctions.logOutLocal()
+        //sqlFunctions.logOutSQL();
+    })
 
 };
-

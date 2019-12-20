@@ -1,32 +1,51 @@
-var localFunctions = require('./scripts/localfunctions.js');
+var LocalFunctions = require('./scripts/localfunctions.js');
 //var sqlFunctions = require('./scripts/sqlfunctions.js');
 var $ = require('./scripts/jQuery.js');
 
 window.onload = function () {
 
-    if(sessionStorage.getItem("permission_level") == "1") {
-        $('#admin_button').prop("disabled", false);
+    //display for the index page
+
+    if (LocalFunctions.checkPermissionsLocal("permission_level") == "1") {
+        LocalFunctions.addRemoveDisableElements('#admin_button', "enable");
     };
 
-    if (sessionStorage.getItem("permission_level") == ("1" || "2")) {
-        $('#quiz_section').css("display", "inline");
-    }
+    if (
+        (LocalFunctions.checkPermissionsLocal("logged_in") == "true")) {
+        LocalFunctions.addRemoveDisableElements('#quiz_section', "add");
+    };
 
-    if (sessionStorage.getItem("logged_in") == "true") {
-        $('#spiel').css("display", "none");
-    }   
+    if (LocalFunctions.checkPermissionsLocal("logged_in") == "true") {
+        LocalFunctions.addRemoveDisableElements('#spiel', "remove");
+        LocalFunctions.addRemoveDisableElements('#logout_button', "add");
+    };
 
-    localFunctions.findQuizzesLocal();
-    localFunctions.displayQuizzesLocal();
+    // if (sqlFunctions.checkPermissionsSQL("permission_level") == "1") {
+    //     LocalFunctions.addRemoveDisableElements('#admin_button', "enable")
+    // }
+
+    // if ((LocalFunctions.checkPermissionsSQL("permission_level") == ("1" || "2")) &&
+    //     (LocalFunctions.checkPermissionsSQL("logged_in") == "true")) {
+    //     LocalFunctions.addRemoveDisableElements('#quiz_section', "add");
+    // }
+
+    // if (LocalFunctions.checkPermissionsSQL("logged_in") == "true") {
+    //     LocalFunctions.addRemoveDisableElements('#spiel', "remove");
+    //     LocalFunctions.addRemoveDisableElements('#logout_button', "add");
+    // }
+
+    LocalFunctions.findQuizzesLocal();
+    LocalFunctions.displayQuizzesLocal();
     //sqlFunctions.findQuizzesSQL();
 
 
     $("#start_quiz").click(() => {
-        localFunctions.removeItem('.qanda');
-        var quizNumber = localFunctions.getQuizNumber();
+        LocalFunctions.addRemoveDisableElements('#quiz_display_section', "add");
+        LocalFunctions.addRemoveDisableElements('.qanda', "remove");
+        var quizNumber = LocalFunctions.getQuizNumber();
         try {
             //sqlFunctions.startQuizSessionSQL(quizNumber, /*accountId*/);
-            localFunctions.startAndStoreQuizSessionLocal(quizNumber, /*accountId*/);
+            LocalFunctions.startAndStoreQuizSessionLocal(quizNumber, /*accountId*/ );
         } catch (e) {
             console.log(e.message)
         };
@@ -35,19 +54,26 @@ window.onload = function () {
         } catch (e) {
             console.log(e.message)
         };
-        localFunctions.findQuestionsLocal(quizNumber);
+        LocalFunctions.findQuestionsLocal(quizNumber);
         //sqlFunctions.findQuestionsSQL(quizNumber);
-        localFunctions.printQandA();
+        LocalFunctions.printQandA();
     });
 
-    $("form").on("submit", function(event) {
-        $('.hidden_until_trigger2').css('visibility', "visible")
+    $("form").on("submit", function (event) {
+        //$('.hidden_until_trigger2').css('visibility', "visible")
+        LocalFunctions.addRemoveDisableElements('#score', "add");
         event.preventDefault();
-        localFunctions.gatherFormDataLocal();
-        localFunctions.removeItem('.question');
-        localFunctions.removeItem('.answer');
-        localFunctions.checkAnswersLocal();
+        LocalFunctions.gatherFormDataLocal();
+        LocalFunctions.addRemoveDisableElements('.question', "remove");
+        LocalFunctions.addRemoveDisableElements('.answer', "remove");
+        LocalFunctions.checkAnswersLocal();
+        LocalFunctions.addRemoveDisableElements('#quiz_display_section', "remove");
         //sqlFunctions.sendAnswersToSQL(sessionQandAs) //This will need to be moved from localfunctions.js
-      });
+    });
+
+    $('#logout_button').click(() => {
+        LocalFunctions.logOutLocal()
+        //sqlFunctions.logOutSQL();
+    })
 
 }

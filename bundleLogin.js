@@ -41,6 +41,255 @@ module.exports={
     ]
 }
 },{}],2:[function(require,module,exports){
+module.exports={
+    "answers":
+        [{
+            "answer_id": 1,
+            "answer_text": "Insect",
+            "question_id": 1
+        }, {
+            "answer_id": 2,
+            "answer_text": "Arachnid",
+            "question_id": 1
+        }, {
+            "answer_id": 3,
+            "answer_text": "Fish",
+            "question_id": 1
+        }, {
+            "answer_id": 4,
+            "answer_text": "Dog",
+            "question_id": 1
+        }, {
+            "answer_id": 5,
+            "answer_text": "243",
+            "question_id": 2
+        }, {
+            "answer_id": 6,
+            "answer_text": "112",
+            "question_id": 2
+        }, {
+            "answer_id": 7,
+            "answer_text": "568",
+            "question_id": 2
+        }, {
+            "answer_id": 8,
+            "answer_text": "Broken",
+            "question_id": 2
+        }, {
+            "answer_id": 9,
+            "answer_text": "Kettle",
+            "question_id": 3
+        }, {
+            "answer_id": 10,
+            "answer_text": "Shoe",
+            "question_id": 3
+        }, {
+            "answer_id": 11,
+            "answer_text": "Lamp",
+            "question_id": 3
+        }, {
+            "answer_id": 12,
+            "answer_text": "Pint of Lager",
+            "question_id": 3
+        }, {
+            "answer_id": 13,
+            "answer_text": "Tims shoe",
+            "question_id": 4
+        }, {
+            "answer_id": 14,
+            "answer_text": "Kettle",
+            "question_id": 4
+        }, {
+            "answer_id": 15,
+            "answer_text": "Lamp",
+            "question_id": 4
+        }, {
+            "answer_id": 16,
+            "answer_text": "Pint of Lager",
+            "question_id": 4
+        }, {
+            "answer_id": 17,
+            "answer_text": "Doesnt have one",
+            "question_id": 5
+        }, {
+            "answer_id": 18,
+            "answer_text": "Borneo City",
+            "question_id": 5
+        }, {
+            "answer_id": 19,
+            "answer_text": "Kuala Lumpor",
+            "question_id": 5
+        }, {
+            "answer_id": 20,
+            "answer_text": "Yateley",
+            "question_id": 5
+        }, {
+            "answer_id": 21,
+            "answer_text": "Never give up",
+            "question_id": 6
+        }, {
+            "answer_id": 22,
+            "answer_text": "Keep on moving",
+            "question_id": 6
+        }, {
+            "answer_id": 23,
+            "answer_text": "Trust Encouragement Reward Loyalty, Satisfaction",
+            "question_id": 6
+        }, {
+            "answer_id": 24,
+            "answer_text": "Youre the best",
+            "question_id": 6
+        }, {
+            "answer_id": 25,
+            "answer_text": "Team Individuality",
+            "question_id": 7
+        }, {
+            "answer_id": 26,
+            "answer_text": "Trust Encouragement Reward Loyalty, Satisfaction",
+            "question_id": 7
+        }, {
+            "answer_id": 27,
+            "answer_text": "Anything Nobby Burton says",
+            "question_id": 7
+        }, {
+            "answer_id": 28,
+            "answer_text": "Dead Poets Society",
+            "question_id": 7
+        }, {
+            "answer_id": 29,
+            "answer_text": "Mungo Jerry",
+            "question_id": 8
+        }, {
+            "answer_id": 30,
+            "answer_text": "4 non-blondes",
+            "question_id": 8
+        }, {
+            "answer_id": 31,
+            "answer_text": "Texas",
+            "question_id": 8
+        }, {
+            "answer_id": 32,
+            "answer_text": "Foregone Conclusion",
+            "question_id": 8
+        }, {
+            "answer_id": 33,
+            "answer_text": 19,
+            "question_id": 9
+        }, {
+            "answer_id": 34,
+            "answer_text": 18,
+            "question_id": 9
+        }, {
+            "answer_id": 35,
+            "answer_text": 20,
+            "question_id": 9
+        }, {
+            "answer_id": 36,
+            "answer_text": 21,
+            "question_id": 9
+        }, {
+            "answer_id": 37,
+            "answer_text": "Jelly",
+            "question_id": 10
+        }, {
+            "answer_id": 38,
+            "answer_text": "Foxholes",
+            "question_id": 10
+        }, {
+            "answer_id": 39,
+            "answer_text": "Mr Toad",
+            "question_id": 10
+        }, {
+            "answer_id": 40,
+            "answer_text": "Benefits fraud",
+            "question_id": 10
+        }]
+}
+},{}],3:[function(require,module,exports){
+module.exports={
+    "questions": [{
+            "question_id": 1,
+            "question_text": "What type of animal is a spider?",
+            "correct_answer_id": 1,
+            "question_used": false,
+            "quiz_id": 1
+        },
+        {
+            "question_id": 2,
+            "question_text": "What is the printer error?",
+            "correct_answer_id": 5,
+            "question_used": false,
+            "quiz_id": 1
+        },
+        {
+            "question_id": 3,
+            "question_text": "What can Finchy throw over a pub?",
+            "correct_answer_id": 9,
+            "question_used": false,
+            "quiz_id": 1
+        },
+        {
+            "question_id": 4,
+            "question_text": "What did Finchy throw over the Warehouse?",
+            "correct_answer_id": 13,
+            "question_used": false,
+            "quiz_id": 1
+        },
+        {
+            "question_id": 5,
+            "question_text": "Whats the capital of Borneo?",
+            "correct_answer_id": 17,
+            "question_used": false,
+            "quiz_id": 1
+        },
+        {
+            "question_id": 6,
+            "question_text": "What does Tim tell Dawn?",
+            "correct_answer_id": 21,
+            "question_used": false,
+            "quiz_id": 1
+        },
+        {
+            "question_id": 7,
+            "question_text": "What is Davids management philosophy?",
+            "correct_answer_id": 25,
+            "question_used": false,
+            "quiz_id": 1
+        },
+        {
+            "question_id": 8,
+            "question_text": "Who wrote 'In the Summertime?",
+            "correct_answer_id": 29,
+            "question_used": false,
+            "quiz_id": 1
+        },
+        {
+            "question_id": 9,
+            "question_text": "What was the average age of a soldier in the Vietnam War?",
+            "correct_answer_id": 33,
+            "question_used": false,
+            "quiz_id": 1
+        },
+        {
+            "question_id": 10,
+            "question_text": "What is Gareth afraid of?",
+            "correct_answer_id": 37,
+            "question_used": false,
+            "quiz_id": 1
+        }
+    ]
+}
+},{}],4:[function(require,module,exports){
+module.exports={
+    "quizzes": [{
+        "quiz_id": 1,
+        "quiz_name": "The Real Quiz"
+    }, {
+        "quiz_id": 2,
+        "quiz_name": "The Dead Parrots Quiz\n"
+    }]
+}
+},{}],5:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v3.3.1
  * https://jquery.com/
@@ -10405,18 +10654,389 @@ if ( !noGlobal ) {
 
 return jQuery;
 } );
-},{}],3:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
+var Question = require('./modules/question.js');
+var Answer = require('./modules/answer.js');
+var Quiz = require('./modules/quiz.js');
+var QuizSession = require('./modules/quizSession.js');
+var $ = require('./jQuery.js');
+var QuizJSON = require('../data/quizzes.json');
+var QuestionJSON = require('../data/questions.json');
+var AnswerJSON = require('../data/answers.json');
+var Account = require('./modules/account.js');
+
+//the work
+(function (exports) {
+
+    var questions = [];
+    var quizzes = [];
+    var answers = [];
+    var sessionQandAs = [];
+
+    //Find the quizzes and fill quizzes Array
+    function findQuizzesLocal() {
+        QuizJSON.quizzes.forEach((value) => {
+            //quizMockJSON.forEach((value) => {
+            quizzes.push(new Quiz(value.quiz_id, value.quiz_name))
+        });
+    };
+    //Fill the quizzes <select> with options
+    function displayQuizzesLocal() {
+        //quizzes = []
+        $('#quizzes_selector').empty();
+        quizzes.forEach((value) => {
+            var print = $("<option></option>").text(value.quiz_name).attr('value', value.quiz_id)
+            $('#quizzes_selector').append(print)
+        });
+    };
+
+    //get quiz Number
+    function getQuizNumber() {
+        return $('#quizzes_selector').val();
+    }
+
+    //find questions from that quiz and put them in this array
+    function findQuestionsLocal(quizNumber) {
+        questions = []
+        if (quizNumber) {
+            QuestionJSON.questions.forEach((value) => {
+                if (value.quiz_id == quizNumber) {
+                    questions.push(new Question(value.question_id, value.question_text, value.correct_answer_id, value.question_used, value.quiz_id))
+                };
+            })
+        } else {
+            QuestionJSON.questions.forEach((value) => {
+                questions.push(new Question(value.question_id, value.question_text, value.correct_answer_id, value.question_used, value.quiz_id))
+            })
+        }
+
+        //console.log("Questions array after findQuestions: " + questions)
+    };
+
+    //for each question, find the answers
+    function findAnswersLocal(questionNumber) {
+        AnswerJSON.answers.forEach((value) => {
+            if (value.question_id == questionNumber) {
+                answers.push(new Answer(value.answer_id, value.answer_text, value.question_id))
+            };
+        });
+        //console.log("Answers for this question " + questionNumber + ": " + answers)
+    };
+
+    function clearArray(arrayName) {
+        arrayName.length = 0;
+    }
+
+    //print q and a for each value in questions array
+    function printQandA(permissionLevel) {
+        $('.hidden_until_trigger').css("visibility", "visible")
+        questions.forEach((value) => {
+            //var answers = [];
+            findAnswersLocal(value.question_id);
+            // $('#questions_and_answers').empty()
+            var questionToPrint = $("<p></p>").text(value.question_text).attr('id', `Question${value.question_id}`).attr('class', 'question')
+            $('#questions_and_answers').append(questionToPrint);
+            if (permissionLevel !== 3) {
+                var select = $("<select></select>").attr('id', `Select${value.question_id}`).attr('class', 'answer').attr('name', `Question${value.question_id}`);
+                $(`#Question${value.question_id}`).append(select);
+                answers.forEach((val) => {
+                    var answerToPrint = $("<option></option>").text(val.answer_text).attr('value', val.answer_id)
+                    $(`#Select${value.question_id}`).append(answerToPrint);
+                });
+                clearArray(answers);
+                
+            } else {
+                addRemoveDisableElements('#form_submit_button', "disable")
+                $('#form_submit_button').attr('type', 'text').val("To take a quiz, get a higher level account")
+            }
+        });
+    };
+
+
+
+    var thisSession
+
+    function startAndStoreQuizSessionLocal(quizNumber, accountId) {
+        accountId = 2;
+        thisSession = new QuizSession(accountId, 1, quizNumber, "16/12/19", 0, null);
+        sessionStorage.setItem("accountId", thisSession.account_taking_id);
+        sessionStorage.setItem("session_id", thisSession.session_id);
+        sessionStorage.setItem("quiz_id", thisSession.quiz_id);
+        sessionStorage.setItem("start_date", thisSession.start_date);
+        sessionStorage.setItem("score", thisSession.score);
+        //console.log(thisSession)
+    };
+
+    function updateQuizSessionLocal(thisQandA) {
+        sessionQandAs.push(thisQandA)
+    }
+
+
+    function gatherFormDataLocal() {
+        //gather all Questions by class (10)
+        //For each, create a thisQandA
+        //answer_id is val() of option:selected of the child select
+        //answer_text is text() of option:selected of the child select
+        //question_id is attribute of child select with .replace('Select', ''),
+        //question_text is text of this
+
+        // var answersSubmitted = [];
+        // $('.question').map(() => {
+        //     var child = $(this).children(":first")
+        //     let thisQandA = {
+        //         answer_id: child.val(),
+        //         answer_text: .text(),  //gets text from ALL select options
+        //         question_text: $().text(), //gets text from ALL select options and question
+        //         question_id: $().attr('id').replace('Select', ''),
+
+        //     };
+        // })
+
+        var answersSubmitted = [];
+        $('select.answer').map(function () {
+            let thisQandA = {
+                answer_id: $(this).val(),
+                answer_text: $(this).text(), //gets text from ALL select options
+                question_text: $(this).parent().text(), //gets text from ALL select options and question
+                question_id: $(this).attr('id').replace('Select', ''),
+
+            };
+
+            answersSubmitted.push(thisQandA);
+            presentSubmittedForm(thisQandA);
+            updateQuizSessionLocal(thisQandA);
+
+            sessionStorage.setItem(`Answer${thisQandA.question_id }`, `${thisQandA.answer_id}`)
+
+
+        });
+        var answersSubmittedSerialized = $("form").serialize()
+        sessionStorage.setItem("submitted_data", answersSubmittedSerialized);
+        thisSession.questions = sessionQandAs
+        console.log(thisSession)
+    }
+
+    function presentSubmittedForm(QandAobject) {
+        var questionforScreen = $("<li></li>").text("Question: " + QandAobject.question_text).attr('class', 'qanda').css('font-weight', 'bold');
+        var answerforScreen = $('<p></p>').text("Your Answer: " + QandAobject.answer_text).attr('class', 'qanda');
+        $('#show_qanda').append(questionforScreen);
+        $('#show_qanda').append(answerforScreen);
+    };
+
+
+
+    function printScore(correct) {
+        if (correct.length > 5) {
+            var message = "Well done!!"
+        } else if (correct.length <= 5) {
+            var message = "Hmm, not great"
+        }
+        var score = $('<h2></h2>').text("You scored: " + correct.length + "... " + message)
+        $('#score').prepend(score);
+    }
+
+    function checkAnswersLocal() {
+        var correct = sessionQandAs.map((value) => {
+            var thisQuestion = QuestionJSON.questions.find((question) => {
+                return value.question_id == question.question_id
+            });
+            if (thisQuestion.correct_answer_id == value.answer_id) {
+                return thisQuestion
+            };
+        });
+        correct = correct.filter(function (val) {
+            return val != null;
+        });
+        printScore(correct)
+    }
+
+
+    function fillQuestionsOption() {
+        questions.forEach((value) => {
+            var question = $('<option></option>').text(value.question_text).attr('id', `${value.question_id}`)
+            $('#question_selector').append(question)
+        })
+    }
+
+    function hideAdminFunctions() {
+        $('.admin_page_functions').css("display", "none");
+    };
+
+    //admin page functions
+    function printQuestionToEditLocal(questionId) {
+        $('.hidden_until_trigger').css("visibility", "visible")
+        if (questionId) {
+            QuestionJSON.questions.forEach((value) => {
+                if (value.question_id == questionId) {
+                    var questionForPrinting = $('<input></input>').attr('value', value.question_text).attr('id', value.question_id).prop('type', 'text').attr('name', "questionBeingEdited").attr('class', "edit_remove");
+                    var questionText = $('<p></p>').text("Question:").attr('class', "edit_remove");
+                    $('#questions_and_answers').prepend(questionForPrinting);
+                    $('#questions_and_answers').prepend(questionText);
+
+                };
+            });
+        } else {
+            var questionForPrinting = $('<input></input>').prop('type', 'text').attr('name', "questionBeingEdited").attr('class', "edit_remove");
+            var questionText = $('<p></p>').text("Question:").attr('class', "edit_remove");
+
+            $('#questions_and_answers').prepend(questionForPrinting);
+            $('#questions_and_answers').prepend(questionText);
+        }
+
+    };
+
+    function printAnswerToEditLocal(questionId) {
+        $('.hidden_until_trigger').css("visibility", "visible")
+        if (questionId) {
+            AnswerJSON.answers.forEach((value) => {
+                if (value.question_id == questionId) {
+                    var answerForPrinting = $('<input></input>').attr('value', value.answer_text).attr('id', value.answer_id).prop('type', 'text').attr('name', `answersBeingEdited${value.answer_id}`).attr('class', "edit_remove");
+                    var answerText = $('<p></p>').text("Answer:").attr('class', "edit_remove");
+                    $('#questions_and_answers').prepend(answerForPrinting);
+                    $('#questions_and_answers').prepend(answerText);
+
+                };
+            });
+            // var submitButton = $('<input></input>').prop("type", "submit").attr('id', 'submit_edited_question').text("Submit Edit");
+            // $('#questions_and_answers').append(submitButton)
+        } else {
+            for (var i = 1; i < 5; i++) {
+                var answerForPrinting = $('<input></input>').prop('type', 'text').attr('name', `${i}`).attr('class', "edit_remove");
+                var answerText = $('<p></p>').text(`Answer ${i}:`).attr('class', "edit_remove");
+                var isCorrect = $('<input></input>').prop('type', 'checkbox').attr('value', i).attr('name', `checkbox${i}`).attr('class', 'correct_answer_checkboxes')
+
+                $('#questions_and_answers').prepend('Correct answer: ');
+                $('#questions_and_answers').prepend(isCorrect);
+                $('#questions_and_answers').prepend(answerForPrinting);
+                $('#questions_and_answers').prepend(answerText);
+            }
+        }
+    };
+
+    function submitEditedQuestionLocal(question_id) {
+        var newQuestionText = $('input[name="questionBeingEdited"]').val();
+        for (var i = 0; i < QuestionJSON.questions.length; i++) {
+            if (QuestionJSON.questions[i].question_id == question_id) {
+                QuestionJSON.questions[i].question_text = newQuestionText
+                console.log(QuestionJSON)
+                return
+            };
+        };
+
+        //submitAnswers
+    };
+
+
+    function submitNewQuestionLocal() {
+        //get question and create object
+        //get answers and create objects
+        //get tickboxes and create correct_answer_id for question
+        var randomQuestionId = 15
+        // if ($('.correct_answer_checkboxes').prop('checked')) {
+        //     var correctAnswerCheckbox = 
+        // }
+
+        var questionToCreate = {
+            question_id: randomQuestionId,
+            question_text: $('input[name="questionBeingEdited"]').val(),
+            correct_answer_id: "",
+            question_used: false,
+            quiz_id: 2
+        };
+
+        // var answersToCreate = []
+        // for (var i = 1; i < 5; i++) {
+        //     answersToCreate.push($(`input[name="answersBeingEdited${i}"]`).val());
+        //     }
+        // };
+
+        var newQuestion = new Question(randomQuestionId, $('input[name="questionBeingEdited"]').val(), null, false, 2)
+        QuestionJSON.questions.push(newQuestion)
+        console.log(QuestionJSON.questions);
+    };
+
+    // function removeItem(attribute) {
+    //     $(attribute).remove();
+    // };
+
+    function addRemoveDisableElements(element, action) {
+        if (action == "add") {
+            $(element).css("display", "inline");
+        } else if (action == "remove") {
+            //$(element).remove();
+            $(element).css("display", "none");
+        } else if (action == "show") {
+            $(element).css("visibility", "visible");
+        } else if (action == "hide") {
+            $(element).css("visibility", "hidden");
+        } else if (action == "disable") {
+            $(element).prop("disabled", true);
+        } else if (action == "enable") {
+            $(element).prop("disabled", false);
+        }
+    }
+
+    function checkPermissionsLocal(itemToGet) {
+        return sessionStorage.getItem(itemToGet);
+    }
+
+    function logOutLocal() {
+        if (confirm("This will log you out and you will lose any on-going or past quiz sessions")) {
+            sessionStorage.clear();
+            $(location).attr('href', 'C:/Work/Week%20Project/The_Real_Quiz/Code/index.html');
+        };
+    };
+
+    exports.findQuizzesLocal = findQuizzesLocal;
+    exports.displayQuizzesLocal = displayQuizzesLocal;
+    exports.getQuizNumber = getQuizNumber;
+    exports.findQuestionsLocal = findQuestionsLocal;
+    exports.printQandA = printQandA;
+    exports.startAndStoreQuizSessionLocal = startAndStoreQuizSessionLocal;
+    exports.gatherFormDataLocal = gatherFormDataLocal;
+    exports.presentSubmittedForm = presentSubmittedForm;
+    //exports.removeItem = removeItem;
+    exports.checkAnswersLocal = checkAnswersLocal;
+    exports.fillQuestionsOption = fillQuestionsOption;
+    exports.printQuestionToEditLocal = printQuestionToEditLocal;
+    exports.submitEditedQuestionLocal = submitEditedQuestionLocal;
+    exports.printAnswerToEditLocal = printAnswerToEditLocal;
+    exports.submitNewQuestionLocal = submitNewQuestionLocal;
+    exports.hideAdminFunctions = hideAdminFunctions;
+    exports.addRemoveDisableElements = addRemoveDisableElements;
+    exports.checkPermissionsLocal = checkPermissionsLocal;
+    exports.logOutLocal = logOutLocal;
+
+
+
+})(typeof exports === 'undefined' ?
+    this['loccalfunctions'] = {} : exports);
+},{"../data/answers.json":2,"../data/questions.json":3,"../data/quizzes.json":4,"./jQuery.js":5,"./modules/account.js":8,"./modules/answer.js":9,"./modules/question.js":10,"./modules/quiz.js":11,"./modules/quizSession.js":12}],7:[function(require,module,exports){
 var $ = require('./jQuery.js');
 //var Account = require('./modules/account.js');
 var AccountJSON = require('../data/accounts.json');
 //const Sequelize = require('sequelize');
+var LocalFunctions = require('./localfunctions.js');
 
 window.onload = function () {
 
-    if (sessionStorage.getItem("permission_level") == "1") {
-        $('#admin_button').prop("disabled", false);
+    if (LocalFunctions.checkPermissionsLocal("permission_level") == "1") {
+        LocalFunctions.addRemoveDisableElements('#admin_button', "enable");
     };
 
+    if (LocalFunctions.checkPermissionsLocal("logged_in") == "true") {
+        LocalFunctions.addRemoveDisableElements('#spiel', "remove");
+        LocalFunctions.addRemoveDisableElements('#logout_button', "add");
+    };
+
+    // if (sqlFunctions.checkPermissionsSQL("permission_level") == "1") {
+    //     LocalFunctions.addRemoveDisableElements('#admin_button', "enable")
+    // }
+
+    // if (LocalFunctions.checkPermissionsSQL("logged_in") == "true") {
+    //     LocalFunctions.addRemoveDisableElements('#spiel', "remove");
+    //     LocalFunctions.addRemoveDisableElements('#logout_button', "add");
+    // }
 
     $('#username').blur(() => {
         checkField("#username", /^[A-z0-9._%+-]+@[A-z0-9.-]+\.[A-z]{2,}$/)
@@ -10542,18 +11162,81 @@ window.onload = function () {
     // }
 
     function loggedIn(isLoggedIn) {
-    if (isLoggedIn) {
-        sessionStorage.setItem("logged_in", true)
-        $(location).attr('href', 'C:/Work/Week%20Project/The_Real_Quiz/Code/index.html')
-    } else {
-        sessionStorage.removeItem("logged_in")
-        console.log("Sorry, we couldn't log you in, please try again")
-        $('#username').css("border-color", "red")
-        $('#password').css("border-color", "red")
+        if (isLoggedIn) {
+            sessionStorage.setItem("logged_in", true)
+            $(location).attr('href', 'C:/Work/Week%20Project/The_Real_Quiz/Code/index.html')
+        } else {
+            sessionStorage.removeItem("logged_in")
+            console.log("Sorry, we couldn't log you in, please try again")
+            $('#username').css("border-color", "red")
+            $('#password').css("border-color", "red")
+        }
+    };
+
+    $('#logout_button').click(() => {
+        LocalFunctions.logOutLocal()
+        //sqlFunctions.logOutSQL();
+    })
+
+};
+},{"../data/accounts.json":1,"./jQuery.js":5,"./localfunctions.js":6}],8:[function(require,module,exports){
+module.exports = function (account_id, username, password, permission) {
+    this.account_id = account_id;
+    this.username = username;
+    this.password = password;
+    this.permission = permission;
     }
-};
+},{}],9:[function(require,module,exports){
+//  class Answer {
+//     constructor(answer_id, answer_text, question_id) {
+//         this.answer_id = answer_id;
+//         this.answer_text = answer_text;
+//         this.question_id = question_id;
+//     }
+// }
 
-};
+module.exports = function (answer_id, answer_text, question_id) {
+    this.answer_id = answer_id;
+    this.answer_text = answer_text;
+    this.question_id = question_id;
+    }
+},{}],10:[function(require,module,exports){
+//Set classes
+
+// class Question {
+//     constructor(question_id, question_text, correct_answer_id, question_used) {
+//         this.question_id = question_id;
+//         this.question_text = question_text;
+//         this.correct_answer_id = correct_answer_id;
+//         this.question_used = question_used;
+//     }
+// }
+
+module.exports = function (question_id, question_text, correct_answer_id, question_used, quiz_id) {
+    this.question_id = question_id;
+    this.question_text = question_text;
+    this.correct_answer_id = correct_answer_id;
+    this.question_used = question_used;
+    this.quiz_id = quiz_id;
+    }
 
 
-},{"../data/accounts.json":1,"./jQuery.js":2}]},{},[3]);
+
+},{}],11:[function(require,module,exports){
+module.exports = function (quiz_id, quiz_name) {
+    this.quiz_id = quiz_id;
+    this.quiz_name = quiz_name;
+    }
+},{}],12:[function(require,module,exports){
+module.exports = function (account_taking_id, session_id, quiz_id, start_date, score, questions) {
+    this.account_taking_id = account_taking_id;
+    this.session_id = session_id;
+    this.quiz_id = quiz_id;
+    this.start_date = start_date;
+    this.score = score;
+    this.questions = questions;
+
+
+
+    }
+},{}]},{},[7]);
