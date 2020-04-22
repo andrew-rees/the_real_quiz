@@ -13,7 +13,7 @@ var pg = require('pg');
 //const sequelize = new Sequelize('postgres://username:passwword@localhost(orwhatever):5432/dbname');
 //const sequelize = new Sequelize('postgres://andrew:Password1@localhost:3000/TEST_Quiz'); //softwire
 //const sequelize = new Sequelize('postgres://postgres:Password1@localhost:5432/Test'); //postgres12
-const sequelize = new Sequelize('postgres://postgres:Password1@localhost:8080/The_Real_Quiz'); //postgres12
+const sequelize = new Sequelize('postgres://postgres:Password1@localhost:8081/The_Real_Quiz'); //postgres12
 
 //TEST of connectivity
 sequelize

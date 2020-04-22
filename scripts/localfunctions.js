@@ -279,7 +279,7 @@ var AccountJSON = require('../data/accounts.json');
         if (confirm("This will log you out and you will lose any on-going or past quiz sessions")) {
             sessionStorage.clear();
             document.cookie = "";
-            $(location).attr('href', 'http://192.168.43.222:8080//index.html');
+            $(location).attr('href', 'http://192.168.1.11:8081//index.html');
         };
     };
 
@@ -369,7 +369,7 @@ var AccountJSON = require('../data/accounts.json');
         if (isLoggedIn) {
             sessionStorage.setItem("logged_in", true);
             document.cookie = `logged_in=true`;
-            $(location).attr('href', 'http://192.168.43.222:8080/index.html');
+            $(location).attr('href', 'http://192.168.1.11:8081/index.html');
             $('#username').css("border-color", "green");
             $('#password').css("border-color", "green");
         } else {
