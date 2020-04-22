@@ -36,7 +36,7 @@ const Sequelize = require('sequelize');
     function startQuizSessionSQL(quizNumber, accountId) {
         accountId = 1; //This is here to hold an account
         sequelize
-            .query(`INSERT INTO "quiz_sessions" ("account_id_taking", "session_id", "quiz_id", "start_date", "score") VALUES(${accountId}, nextval('create_unique_id'), ${quizNumber}, CURRENT_DATE, 0)`)
+            .query(`INSERT INTO "quiz_sessions" ("account_id_taking", "session_id", "quiz_id", "start_date", "score") VALUES(${accountId}, nextval('create_unique_session_id'), ${quizNumber}, CURRENT_DATE, 0)`)
             .then(() => {
                 console.log('Query passed to DB');
                 sequelize.close()
@@ -102,12 +102,12 @@ const Sequelize = require('sequelize');
     };
 
     //to submit an edited question to database
-    function submitEditedQuestionSQL(question_id) {
-        var newQuestionText = $('input[name="questionBeingEdited"]').val();
+    function submitEditedQuestionSQL(question_id, newQuestionText) {
+        //var newQuestionText = $('input[name="questionBeingEdited"]').val();
         sequelize
-            .query(`UPDATE "questions" SET question_text = ${newQuestionText} WHERE question_id=${question_id}`)
+            .query(`UPDATE questions SET question_text='${newQuestionText}' WHERE question_id=${question_id}`)
             .then((questions) => {
-                //handle success
+                console.log(questions)
             })
             .catch(err => {
                 console.error('Unable to connect to the database:', err);
@@ -183,6 +183,8 @@ const Sequelize = require('sequelize');
                 console.error('Unable to connect to the database:', err);
             });
     };
+
+    
 
     exports.startQuizSessionSQL = startQuizSessionSQL;
     exports.storeQuizSessionSQL = storeQuizSessionSQL;
